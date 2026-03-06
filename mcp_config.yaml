@@ -1,0 +1,12 @@
+server:
+  name: "athletecanvas"
+  workspace_root: "c:/temp/garmin"
+
+github:
+  owner: "MikeyVK"
+  repo: "AthleteCanvas"
+  project_number: 1
+
+logging:
+  level: "INFO"
+  audit_log: ".logs/mcp_audit.log"
