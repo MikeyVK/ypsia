@@ -1,240 +1,111 @@
-# Coding Standards
+# Coding Standards — AthleteCanvas
 
-## Overview
+All production code in AthleteCanvas follows this set of engineering principles and conventions.
+This directory is the authoritative reference. When in doubt, these docs take precedence over
+memory or general convention.
 
-This directory contains the comprehensive coding standards for S1mpleTrader V3. All development must follow these guidelines to maintain code quality, consistency, and maintainability.
+---
 
-## Quick Links
+## Quick Reference
 
-📖 **Start Here:** [TDD_WORKFLOW.md](TDD_WORKFLOW.md) - Understand the development cycle
-
-🎯 **Daily Use:** [QUALITY_GATES.md](QUALITY_GATES.md) - Pre-merge checklist
-
-🌳 **Git Strategy:** [GIT_WORKFLOW.md](GIT_WORKFLOW.md) - Branching and commits
-
-✨ **Style Guide:** [CODE_STYLE.md](CODE_STYLE.md) - Code formatting rules
-
-🧩 **Type Checking:** [TYPE_CHECKING_PLAYBOOK.md](TYPE_CHECKING_PLAYBOOK.md) - Standardized fixes for typing issues
-
-## Documentation Structure
-
-### 1. [TDD_WORKFLOW.md](TDD_WORKFLOW.md)
-
-**Test-Driven Development (TDD) Workflow**
-
-Learn the RED → GREEN → REFACTOR cycle with Git integration.
-
-**Topics:**
-- Feature branch setup
-- RED phase: Write failing tests first
-- GREEN phase: Minimal implementation
-- REFACTOR phase: Code quality improvements
-- Quality gates verification
-- Merge to main workflow
-- Commit message conventions
-- Historical anti-patterns to avoid
-
-**When to read:**
-- Starting a new feature/DTO
-- Need reminder of TDD discipline
-- Uncertain about commit structure
-
-### 2. [QUALITY_GATES.md](QUALITY_GATES.md)
-
-**Quality Gates - Pre-Merge Checklist**
-
-The 7 mandatory quality gates that all code must pass.
-
-**Topics:**
-- Gate 0: Ruff formatting (ruff format --check)
-- Gate 1: Ruff strict lint (stricter than VS Code)
-- Gate 2: Import placement (top-level only)
-- Gate 3: Line length (<100 chars)
-- Gate 4: Type checking (mypy strict for DTOs)
-- Gate 5: Tests passing (100%)
-- Post-implementation workflow
-- Bulk quality checks
-- pyrightconfig.json configuration
-- Known acceptable warnings (Pydantic limitations)
-- Code review rejection criteria
-
-**When to read:**
-- Before merging to main
-- Fixing quality gate failures
-- Understanding VS Code warnings
-- Setting up new workspace
-
-### 3. [GIT_WORKFLOW.md](GIT_WORKFLOW.md)
-
-**Git Workflow - Branching & Commit Conventions**
-
-Feature branch workflow with strict quality requirements.
-
-**Topics:**
-- Main branch requirements (always stable)
-- Feature branch naming (`feature/*`, `fix/*`, `refactor/*`, `docs/*`)
-- Feature development flow (create → TDD cycle → quality gates → merge)
-- Commit message conventions (Conventional Commits)
-- Commit best practices (atomic, descriptive)
-- Branch cleanup after merge
-- Integration with GitHub (PRs, tags)
-- Historical anti-patterns
-
-**When to read:**
-- Starting new feature branch
-- Writing commit messages
-- Preparing to merge to main
-- Setting up GitHub integration
-
-### 4. [CODE_STYLE.md](CODE_STYLE.md)
-
-**Code Style Guide - Formatting & Conventions**
-
-Comprehensive style guide for Python code in S1mpleTrader V3.
-
-**Topics:**
-- File headers (mandatory architectural documentation)
-- Import organization (3 groups with comments)
-- Docstring conventions (module verbose, class/method concise)
-- Line length rules (max 100 chars, techniques to fix)
-- Whitespace rules (no trailing, auto-fix commands)
-- Type hinting (mandatory, modern Python 3.10+ syntax)
-- Pydantic DTO conventions (field order, json_schema_extra)
-- Contract-driven development (DTOs vs primitives)
-- Logging & traceability (typed IDs, IJournalWriter)
-- VS Code configuration
-- Anti-patterns to avoid
-
-**When to read:**
-- Creating new modules/files
-- Uncertain about style conventions
-- Writing Pydantic DTOs
-- Setting up VS Code environment
-
-## Common Workflows
-
-### Starting a New DTO
-
-1. **Read:** [TDD_WORKFLOW.md](TDD_WORKFLOW.md) - Understand the cycle
-2. **Create feature branch:**
-   ```powershell
-   git checkout -b feature/my-dto
-   ```
-3. **RED phase:** Write failing tests, commit
-4. **GREEN phase:** Minimal implementation, commit
-5. **REFACTOR phase:** Quality improvements, commit
-6. **Check:** [QUALITY_GATES.md](QUALITY_GATES.md) - Run all 7 gates
-7. **Merge:** [GIT_WORKFLOW.md](GIT_WORKFLOW.md) - Merge to main
-
-### Fixing Quality Gate Failures
-
-1. **Identify failure:** Check VS Code Problems panel or gate output
-2. **Consult:** [QUALITY_GATES.md](QUALITY_GATES.md) - Find gate details
-3. **Fix common issues:**
-   - Trailing whitespace → Auto-fix command
-   - Line length → [CODE_STYLE.md](CODE_STYLE.md) techniques
-   - Imports → Move to top-level
-   - Type hints → Add return types
-4. **Re-run gates:** Verify all gates pass before merge
-
-### Writing Good Commit Messages
-
-1. **Read:** [GIT_WORKFLOW.md](GIT_WORKFLOW.md) - Commit conventions
-2. **Use prefixes:** `test:`, `feat:`, `refactor:`, `docs:`, `fix:`, `chore:`
-3. **Structure:** Short summary + optional body + optional footer
-4. **Include status:** `Status: RED|GREEN`, `Quality gates: 10/10`
-
-### Setting Up New Workspace
-
-1. **VS Code settings:** [CODE_STYLE.md](CODE_STYLE.md) - Recommended config
-2. **pyrightconfig.json:** [QUALITY_GATES.md](QUALITY_GATES.md) - Type checking
-3. **Auto-fix setup:** [QUALITY_GATES.md](QUALITY_GATES.md) - Whitespace commands
-4. **Git hooks (optional):** Pre-commit quality checks
-
-## Quality Metrics
-
-All code must meet these standards before merge:
-
-| Gate | Check | Target | Tool |
-|------|-------|--------|------|
-| 0 | Formatting | Pass | `ruff format --check --isolated` |
-| 1 | Strict Lint | Pass | `ruff check --isolated` (stricter than IDE) |
-| 2 | Import Placement | Pass | `ruff check --isolated --select=PLC0415` |
-| 3 | Line Length | Pass | `ruff check --isolated --select=E501` (max 100 chars) |
-| 4 | Type Checking | 0 errors | `mypy --strict` (DTOs only: `backend/dtos/**/*.py`) |
-| 5 | Tests Passing | 100% | `pytest` |
-| 6 | Code Coverage | >= 90% | `pytest --cov=backend --cov=mcp_server --cov-branch --cov-fail-under=90` |
-
-**Configuration Doctrine:**
-- **`pyproject.toml`** = IDE baseline (pragmatic, for VS Code/PyCharm)
-- **`.st3/quality.yaml`** = CI authority (strict, gates use `--isolated`)
-- See [QUALITY_GATES.md](QUALITY_GATES.md) for complete details and exact commands
-
-## Key Principles
-
-1. **TDD First** - Write tests before implementation (RED → GREEN → REFACTOR)
-2. **Quality Gates** - All 10/10 before merge to main
-3. **Feature Branches** - Never commit directly to main during development
-4. **Conventional Commits** - Clear, structured commit messages
-5. **Type Safety** - Full type hints, Pydantic DTOs only
-6. **Documentation** - Module headers, concise docstrings
-7. **No Shortcuts** - Quality is non-negotiable
-
-## Test File Placement (Guardrail — Issue #247)
-
-> **Violation of this rule caused Issue #247 (169 test files scattered across `tests/`).**
-
-| Source module | Test destination |
+| I need to... | Read this |
 |---|---|
-| `mcp_server/**` | `tests/mcp_server/unit/<mirror-path>/` |
-| `mcp_server/**` (E2E) | `tests/mcp_server/integration/` |
-| `backend/**` | `tests/backend/<mirror-path>/` |
-| **❌ NEVER** | `tests/*.py` root or `tests/unit/` |
+| Understand which principles govern design decisions | [CODE_STYLE.md → SOLID, Config over Code, DRY, etc.](CODE_STYLE.md) |
+| Know how to structure a new class or method | [CODE_STYLE.md → Contract-Driven Development, Type Hinting, Formatting](CODE_STYLE.md) |
+| Run quality checks before a commit or PR | [QUALITY_GATES.md](QUALITY_GATES.md) |
+| Fix a mypy / Pylance typing issue | [TYPE_CHECKING_PLAYBOOK.md](TYPE_CHECKING_PLAYBOOK.md) |
 
-**Enforcement:**
-- `base_path` in `.st3/artifacts.yaml` for `unit_test` → `tests/mcp_server/unit/`
-- `base_path` in `.st3/artifacts.yaml` for `integration_test` → `tests/mcp_server/integration/`
-- For backend code, override via `output_path="tests/backend/..."` in `scaffold_artifact`
-- `pytest` zonder args = enkel `tests/mcp_server/` (via `testpaths` in `pyproject.toml`)
-- `pytest tests/backend/` = explicit backend run
+---
 
-**Scaffolding:**
-```python
-# MCP server unit test (default base_path werkt automatisch)
-scaffold_artifact(artifact_type="unit_test", name="TestMyTool", context={...})
-# → tests/mcp_server/unit/test_my_tool.py
+## Engineering Principles (Priority Order)
 
-# Backend unit test (output_path verplicht)
-scaffold_artifact(
-    artifact_type="unit_test", name="TestMyWorker",
-    output_path="tests/backend/workers/test_my_worker.py",
-    context={...}
-)
-```
+These principles are ordered by foundational importance. When they appear to conflict, the earlier
+one takes precedence.
 
-## Historical Context
+### 1. SOLID
 
-**Recent violations (commits 1d4258a, d3418dd, 7b62902):**
-- ❌ Direct commits to main (should use feature branches)
-- ❌ Tests + implementation combined (should separate RED/GREEN)
-- ❌ No RED phase commits (tests written after implementation)
+The five object-oriented design principles. The most important for AthleteCanvas:
 
-**Correction:** From now on, STRICT adherence to all standards. No exceptions.
+- **SRP** — one reason to change per class/module
+- **OCP** — extend via new class, not by modifying existing ones (adapter registry pattern)
+- **LSP** — any concrete adapter is a drop-in for BaseAdapter
+- **ISP** — separate `IActivityReader`, `IActivityWriter`, `IEmbeddingStore` interfaces
+- **DIP** — pipelines receive abstractions via constructor injection, never instantiate concrete deps
 
-## Related Documentation
+→ Full detail in [CODE_STYLE.md#solid-principles](CODE_STYLE.md)
 
-- **Architecture:** [../architecture/README.md](../architecture/README.md) - System design principles
-- **Implementation:** [../implementation/IMPLEMENTATION_STATUS.md](../implementation/IMPLEMENTATION_STATUS.md) - Current progress
-- **Reference:** [../reference/README.md](../reference/README.md) - Templates and examples
+### 2. DRY (Don't Repeat Yourself)
 
-## Support
+The same logic exists in exactly one place. Common extraction points: datetime normalisation,
+dedup hashing, retry logic.
 
-**Questions about standards?**
-- Check relevant document first
-- Look for examples in existing code (see [../reference/README.md](../reference/README.md))
-- Update this documentation if clarification needed
+→ [CODE_STYLE.md#dry](CODE_STYLE.md)
 
-**Found outdated information?**
-- Create `docs/update-coding-standards` branch
-- Fix documentation
-- Submit with `docs:` commit prefix
+### 3. Config over Code
+
+No hardcoded operational values (paths, model names, thresholds, retry counts). All in
+`backend/config/*.yaml`, loaded via typed Pydantic `AppConfig`.
+
+→ [CODE_STYLE.md#config-over-code](CODE_STYLE.md)
+
+### 4. Idempotence
+
+Pipelines produce the same state whether run once or ten times. All writes are upserts.
+
+→ [CODE_STYLE.md#idempotence](CODE_STYLE.md)
+
+### 5. Fail-Fast at Startup
+
+Config and path validation happens before the first request is accepted. Bad config = immediate
+crash with a clear message, not a silent mid-run failure.
+
+→ [CODE_STYLE.md#fail-fast-at-startup](CODE_STYLE.md)
+
+### 6. Contract-Driven Development
+
+All data flows between components via Pydantic DTOs. No raw `dict` passing between layers.
+
+→ [CODE_STYLE.md#contract-driven-development](CODE_STYLE.md)
+
+---
+
+## Code Conventions Summary
+
+| Convention | Rule |
+|---|---|
+| Type hints | Mandatory on all functions and methods, including tests |
+| Datetime | Always UTC-aware; enforced by `field_validator` at DTO boundary |
+| Imports | Three sections (stdlib / third-party / project), alphabetical, never inside functions |
+| Line length | 100 characters maximum |
+| File headers | `@layer`, `@dependencies`, `@responsibilities` — auto-generated by `scaffold_artifact` |
+| Docstrings | Module: comprehensive. Class: one-line. Method: brief Google style |
+| Pydantic examples | `json_schema_extra` with ≥ 2 examples on all exported DTOs |
+| Global state | Forbidden — use constructor injection |
+| Magic values | Forbidden — all in config YAML |
+| Naive datetimes | Forbidden — UTC-aware only |
+
+---
+
+## Quality Gates Summary
+
+| Gate | What it checks | Primary tool |
+|---|---|---|
+| 0 | Ruff format | `run_quality_gates` |
+| 1 | Ruff strict lint (incl. ANN type annotations) | `run_quality_gates` |
+| 2 | Import placement (top-level only) | `run_quality_gates` |
+| 3 | Line length ≤ 100 chars | `run_quality_gates` |
+| 4 | mypy strict (DTOs only) | `run_quality_gates` |
+| 5 | All tests passing | `run_tests` |
+| 6 | Branch coverage ≥ 90% | `run_tests` |
+
+→ Full commands and failure patterns in [QUALITY_GATES.md](QUALITY_GATES.md)
+
+---
+
+## Tooling
+
+Quality gates are run via the **`run_quality_gates` MCP tool** — not manually. Use the manual
+ruff/mypy commands in QUALITY_GATES.md only when debugging a specific gate failure.
+
+Scaffolding is done via **`scaffold_artifact`** — not by creating files manually. Scaffolded files
+auto-include correct headers, import structure, and Pydantic conventions.

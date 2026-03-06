@@ -2,7 +2,10 @@
 
 ## Purpose
 
-This document standardizes how we resolve typing issues so that **all agents** (and humans) apply the **same** fixes in the **same order**.
+This document standardizes how typing issues are resolved in AthleteCanvas so that all agents
+and developers apply the **same fixes in the same order**.
+
+Integrated with [QUALITY_GATES.md](QUALITY_GATES.md) (Gate 4) and [CODE_STYLE.md](CODE_STYLE.md).
 
 **Goals:**
 - Keep CI/PR gates strict and consistent.

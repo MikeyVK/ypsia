@@ -35,9 +35,11 @@ activate_code_validation_tools           → 4 validation tools
 
 Don't guess the phase or status. **Query the system:**
 
-1. **Read Coding Standards:**
-   - `st3://rules/coding_standards` → *Loads TDD rules, Style, Quality Gates.*
-   - Also follow [docs/coding_standards/TYPE_CHECKING_PLAYBOOK.md](docs/coding_standards/TYPE_CHECKING_PLAYBOOK.md) for typing consistency.
+1. **Read Coding Standards (authoritative source):**
+   - [docs/coding_standards/README.md](docs/coding_standards/README.md) — Quick reference and principles overview
+   - [docs/coding_standards/CODE_STYLE.md](docs/coding_standards/CODE_STYLE.md) — SOLID, Config over Code, DRY, Idempotence, Fail-Fast, Contract-Driven Development, formatting
+   - [docs/coding_standards/QUALITY_GATES.md](docs/coding_standards/QUALITY_GATES.md) — 6 quality gates, ruff/mypy commands, PR rejection criteria
+   - [docs/coding_standards/TYPE_CHECKING_PLAYBOOK.md](docs/coding_standards/TYPE_CHECKING_PLAYBOOK.md) — Mandatory typing issue resolution order
 2. **Check Development Phase:**
    - `st3://status/phase` → *Tells you current_phase, active_branch, is_clean.*
 3. **Check Work Context:**
@@ -272,7 +274,7 @@ force_phase_transition(
 
 - "What is my next task?" → `get_work_context`
 - "What phase am I in?" → `st3://status/phase`
-- "How do I build X?" → `st3://rules/coding_standards`
+- "How do I build X?" → [docs/coding_standards/CODE_STYLE.md](docs/coding_standards/CODE_STYLE.md)
 - "Which tool?" → **Phase 5: Tool Priority Matrix**
 - "How to start?" → **Phase 2: Issue-First Workflow**
 
