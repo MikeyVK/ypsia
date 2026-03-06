@@ -1,0 +1,30 @@
+# Python
+backend/.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.coverage
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Logs & runtime state
+.logs/
+.st3/state.json
+.st3/template_registry.json
+.st3/projects.json
+.st3/temp/
+
+# VS Code (keep mcp.json and settings.json)
+.vscode/*
+!.vscode/mcp.json
+!.vscode/settings.json
+
+# Env
+.env

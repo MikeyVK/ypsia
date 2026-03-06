@@ -1,0 +1,13 @@
+﻿{
+  "servers": {
+    "st3-workflow": {
+      "type": "stdio",
+      "command": "c:\\temp\\garmin\\backend\\.venv\\Scripts\\python.exe",
+      "args": ["-m", "mcp_server"],
+      "cwd": "c:\\temp\\garmin",
+      "env": {
+        "GITHUB_TOKEN": "${env:GITHUB_TOKEN}"
+      }
+    }
+  }
+}
