@@ -26,5 +26,8 @@ frontend/dist/
 !.vscode/mcp.json
 !.vscode/settings.json
 
+# MCP runtime
+.st3/.restart_marker
+
 # Env
 .env
