@@ -68,6 +68,16 @@ phases:
       - "guides"       # User guides, tutorials
       - "agent"        # Agent instructions, .copilot-instructions.md
 
+  epic_planning:
+    display_name: "Epic Planning"
+    description: "Epic-level planning: child issue breakdown, dependency graph, milestone definition"
+    commit_type_hint: "docs"
+    subphases: []
+    exit_requires:
+      - type: file_glob
+        file: "docs/planning/issue{issue_number}/planning.md"
+        description: "Epic planning document aanwezig met child issue breakdown en dependency graph"
+
   coordination:
     display_name: "Coordination"
     description: "Epic-level work, child issue delegation, cross-issue synchronization"
