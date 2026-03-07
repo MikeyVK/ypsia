@@ -2,7 +2,7 @@
 
 ## Overview
 
-All code in S1mpleTrader V3 must pass **7 mandatory quality gates** before merging to main. Each gate must **pass** (exit code 0) to ensure code quality and consistency.
+All code in AthleteCanvas must pass **7 mandatory quality gates** before merging to main. Each gate must **pass** (exit code 0) to ensure code quality and consistency.
 
 ## Configuration Doctrine: IDE vs CI
 
@@ -188,8 +188,7 @@ pytest tests/ --cov=backend --cov=mcp_server --cov-branch --cov-fail-under=90 --
 **Expected:** Branch coverage >= 90% (hard fail below threshold)
 
 **Scope:** Production packages only:
-- `backend/` - Core trading logic
-- `mcp_server/` - MCP server implementation
+- `backend/athletecanvas/` - Core application logic
 
 **Why separate from Gate 5?**
 - **Gate 5:** Validates test correctness (do tests pass?)
@@ -198,7 +197,7 @@ pytest tests/ --cov=backend --cov=mcp_server --cov-branch --cov-fail-under=90 --
 
 **Adding new packages:** When adding new production Python packages, extend Gate 6 scope:
 ```powershell
-pytest tests/ --cov=backend --cov=mcp_server --cov=new_package --cov-branch --cov-fail-under=90
+pytest tests/ --cov=backend/athletecanvas --cov=new_package --cov-branch --cov-fail-under=90
 ```
 
 ## Post-Implementation Workflow
@@ -350,6 +349,92 @@ def _artifact_manager(
 
 **Status:** Use this pattern for all fixtures that inject other fixtures as parameters.
 
+## Test Code Quality
+
+Test code is production code. The same SOLID, DRY, and Config-over-Code principles that apply to `athletecanvas/` apply equally to `tests/`. Quality gates cover both without exception.
+
+### Fake adapters over mocks
+
+Port interfaces (`IActivityWriter`, `IEmbeddingStore`, etc.) must be tested via **fake implementations**, not `unittest.mock.patch()`. Fakes are real classes that implement the port interface with in-memory state:
+
+```python
+# ✅ CORRECT — fake adapter, survives refactoring
+class FakeActivityWriter(IActivityWriter):
+    def __init__(self) -> None:
+        self.written: list[ActivityRecord] = []
+
+    def upsert_batch(self, records: list[ActivityRecord]) -> None:
+        self.written.extend(records)
+
+# ❌ WRONG — mock, breaks on any rename or signature change
+writer = MagicMock(spec=IActivityWriter)
+```
+
+Mocks are acceptable only for external I/O with no port abstraction (e.g. verifying a third-party HTTP call was made).
+
+### Fixtures are shared infrastructure
+
+Test fixtures are the `ports/` of the test layer. They belong in `conftest.py`, not inlined per test:
+
+```python
+# ✅ CORRECT — shared factory in conftest.py
+@pytest.fixture(name="activity_record")
+def _activity_record() -> ActivityRecord:
+    return ActivityRecord(external_id="test-001", source="garmin_export", ...)
+
+# ❌ WRONG — duplicated inline dict in every test that needs an ActivityRecord
+def test_something() -> None:
+    record = ActivityRecord(external_id="test-001", source="garmin_export", ...)
+```
+
+### `conftest.py` per layer, not one global dump
+
+```
+tests/
+  conftest.py            # minimal: pytest config only
+  unit/
+    conftest.py          # unit-level fakes and factories
+  integration/
+    conftest.py          # DB fixtures, pytest-postgresql setup
+```
+
+A root-level `conftest.py` that grows into hundreds of fixtures is a coupling and maintenance problem.
+
+### Config over hardcoded values
+
+Database DSNs, model paths, threshold values, and feature flags must come from pytest fixtures or `pytest.ini` configuration — never hardcoded strings scattered across test files:
+
+```python
+# ✅ CORRECT — config-driven via fixture
+@pytest.fixture
+def db_url(postgresql: ...) -> str:
+    return f"postgresql://..."
+
+# ❌ WRONG — hardcoded, breaks in every environment except yours
+conn = psycopg2.connect("postgresql://localhost:5432/test_db")
+```
+
+### DRY assertions
+
+Repeated assertion patterns must be extracted into helpers:
+
+```python
+# ✅ CORRECT — assertion helper, change once
+def assert_activity_equals(actual: ActivityRecord, expected: ActivityRecord) -> None:
+    assert actual.external_id == expected.external_id
+    assert actual.source == expected.source
+    assert actual.start_time == expected.start_time
+
+# ❌ WRONG — same 10 asserts copy-pasted in every test
+assert record.external_id == "test-001"
+assert record.source == "garmin_export"
+...
+```
+
+### Testability is a design signal
+
+If a service in `services/` cannot be unit-tested without spinning up a database or calling an external API, the port interfaces are wrong. Testability is not a test concern — it is an architecture concern.
+
 ## Code Review Rejection Criteria
 
 **REJECT if any of these conditions:**
@@ -387,6 +472,5 @@ Add to `.vscode/settings.json`:
 
 ## Related Documentation
 
-- [TDD_WORKFLOW.md](TDD_WORKFLOW.md) - Test-driven development cycle
-- [GIT_WORKFLOW.md](GIT_WORKFLOW.md) - Branching and commit conventions
-- [CODE_STYLE.md](CODE_STYLE.md) - Code formatting standards
+- [CODE_STYLE.md](CODE_STYLE.md) - Code formatting standards and test code principles
+- [TYPE_CHECKING_PLAYBOOK.md](TYPE_CHECKING_PLAYBOOK.md) - Standardised fixes for typing issues

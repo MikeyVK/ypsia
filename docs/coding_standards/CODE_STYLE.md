@@ -2,7 +2,7 @@
 
 ## Overview
 
-All code in S1mpleTrader V3 follows **strict PEP 8 compliance** with additional project-specific conventions for consistency and maintainability.
+All code in AthleteCanvas follows **strict PEP 8 compliance** with additional project-specific conventions for consistency and maintainability.
 
 ## General Principles
 
@@ -492,7 +492,5 @@ Recommended `.vscode/settings.json`:
 
 ## Related Documentation
 
-- [TDD_WORKFLOW.md](TDD_WORKFLOW.md) - Test-driven development cycle
-- [QUALITY_GATES.md](QUALITY_GATES.md) - Quality checklist
-- [GIT_WORKFLOW.md](GIT_WORKFLOW.md) - Branching and commit conventions
-- [../architecture/CORE_PRINCIPLES.md](../architecture/CORE_PRINCIPLES.md) - System design philosophy
+- [QUALITY_GATES.md](QUALITY_GATES.md) - Quality checklist and test code quality principles
+- [TYPE_CHECKING_PLAYBOOK.md](TYPE_CHECKING_PLAYBOOK.md) - Standardised fixes for typing issues
