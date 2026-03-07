@@ -199,6 +199,201 @@ These are implementation tasks for the scaffolding child issue, not research fin
 
 `agent.md` must follow the same Config-over-Code principle applied to code: reference, don't duplicate. A 50-line `agent.md` that points to the right docs is more valuable than a 500-line `agent.md` that tries to contain everything and goes stale.
 
+### Finding 4 — ChromaDB User Isolation Strategy
+
+**Decision: per-user collection named `activities_{user_uuid}`, eagerly created at registration, shared embedding model as a platform-level contract.**
+
+#### Per-user collection over metadata filter
+
+Each user gets a dedicated ChromaDB collection (`activities_{user_uuid}`). The alternative — one shared collection with a `user_id` metadata filter on every query — was rejected on security grounds: a missing filter is a data leak (OWASP A01 Broken Access Control). With per-user collections, isolation is structural, not conditional. GDPR deletion is also trivial: drop the collection.
+
+#### Collection naming: UUID not integer PK
+
+Collection names use the user's UUID (`activities_550e8400-e29b-41d4-a716-...`), not the integer primary key. UUIDs are non-enumerable — a collection name exposed in a log, an error message, or a misconfigured endpoint cannot be used to access another user's data. Integer PKs are sequential and guessable.
+
+The UUID is always available from the authenticated user context, so no extra DB lookup is required at query time.
+
+#### Lifecycle: eager creation at registration
+
+The collection is created when the user account is created, not lazily on first embedding. This eliminates null-checks and error branches throughout the embedding pipeline — if the user exists, the collection exists. Deletion is part of the account deletion transaction: PostgreSQL user record and ChromaDB collection are removed together.
+
+#### Embedding model: one model, one language, one knowledge base
+
+All user collections are created with identical embedding model metadata (model name, version, dimensions from `AppConfig`). This is a deliberate platform-level architectural principle, not a technical constraint.
+
+When every user's activities are embedded by the same model, all vectors occupy the same coordinate space. A 45-minute run at 158bpm produces a comparable vector for every user. This makes cross-user patterns discoverable: finding users with similar training loads, community benchmarks, anomaly detection. The moment different users use different models, their data becomes mutually incomprehensible — not one platform with many users, but many isolated islands that happen to share an app.
+
+The embedding model is the shared language of the platform. Changing it is a migration event affecting all users simultaneously — not a per-user configuration option.
+
+### Finding 5 — Authentication & Identity: Delegated to Ory Kratos
+
+**Decision: Ory Kratos handles all identity management. FastAPI is a pure resource server. Zero custom auth code.**
+
+#### Why delegated identity, not DIY
+
+Building authentication from scratch — WebAuthn registration flows, TOTP seed generation, refresh token rotation, account recovery — is high-risk, high-maintenance work that is not differentiating. Every hour spent on auth is an hour not spent on the core platform. More importantly, rolling custom auth is one of the most reliable ways to introduce security vulnerabilities (OWASP A07 Identification and Authentication Failures).
+
+Ory Kratos is a self-hosted, open-source (Apache 2.0) identity and user management system written in Go. It is not a SaaS product — no paid dependency, no data leaving the infrastructure.
+
+#### What Ory Kratos handles
+
+- **Passkeys / WebAuthn** — primary MFA, FIDO2 compliant, device-bound credentials
+- **TOTP** — fallback MFA (Google Authenticator, Authy), also used as account recovery codes
+- **Registration & login flows** — Kratos exposes headless API flows; the React frontend drives the UI
+- **Account recovery** — built-in recovery via email OTP or backup codes; no custom flow needed
+- **Session management** — Kratos issues sessions; FastAPI validates them via the Ory `check` endpoint or JWT introspection
+- **React Native** — `@ory/client` SDK works on React Native; no WebAuthn bridge required at the application layer
+
+#### FastAPI as a pure resource server
+
+FastAPI receives requests with a `Bearer` token or session cookie. It calls the Ory `toSession` endpoint (or validates a JWT signed by Ory) to verify identity. If valid, it extracts `user_uuid` from the token and proceeds. If not, it returns 401.
+
+FastAPI owns **zero** user credentials, **zero** password hashes, **zero** WebAuthn state. The `users` table in PostgreSQL contains only application-level data: `user_uuid` (foreign key to Ory's identity ID), preferences, consent records, linked data-source tokens. No auth state lives in the application DB.
+
+```
+Client → Ory Kratos (login/register/MFA) → session token
+Client → FastAPI (resource requests + Bearer token) → Ory /sessions/whoami → user_uuid → application logic
+```
+
+#### Third-party data source tokens (Garmin, Strava, etc.)
+
+OAuth2 tokens for external data sources (Garmin SSO session via `garth`, Strava OAuth2, etc.) are **application-level** secrets, not identity credentials. They are stored encrypted in PostgreSQL under the `user_uuid`. Ory Kratos does not manage these — this is the application's responsibility.
+
+Encryption at rest: AES-256-GCM, key from `AppConfig` (environment variable, never hardcoded). Token fields are encrypted before insert, decrypted after fetch — handled by a dedicated `ITokenStore` port.
+
+#### No paid dependencies
+
+All components are free and open-source:
+
+| Component | License | Role |
+|---|---|---|
+| Ory Kratos | Apache 2.0 | Identity & MFA |
+| Ory Hydra (optional) | Apache 2.0 | OIDC provider (if AthleteCanvas ever issues tokens to third parties) |
+| `@ory/client` | MIT | React + React Native SDK |
+
+Ory Cloud (the hosted SaaS version) is explicitly **not used**. Kratos runs as a Docker container alongside the application.
+
+#### Mobile considerations
+
+React Native uses `@ory/client` for all auth flows. The Kratos SDK handles passkey flows via platform APIs (iOS Face ID / Touch ID, Android Biometrics). On devices without biometric support, TOTP is the fallback. There is no custom WebAuthn bridge in the application layer.
+
+### Finding 6 — Data Ingestion Architecture
+
+**Decision: `TrackingRecord` as the universal domain envelope, `IDataSource` port per external source, hybrid PostgreSQL storage (fixed columns + JSONB payload), ARQ for background jobs, `garth` polling as the primary Garmin data path.**
+
+#### The core principle: uniform pipeline, diverse payload
+
+The ingestion pipeline has one job regardless of whether a GPS activity, a sleep record, a weight measurement, or a user settings sync arrives. The diversity lives in the payload, not in the pipeline. This separates two concerns that must not be entangled: *how data moves through the system* (pipeline) and *what the data looks like* (schema per type).
+
+#### Domain model: `TrackingRecord`
+
+`TrackingRecord` is the universal envelope. It is not "health data" — it is any data that is tracked over time for a user. The discriminator `record_type` determines how the payload is interpreted.
+
+```
+TrackingRecord
+├── record_type: RecordType      # discriminator enum
+├── user_uuid: UUID
+├── source_id: str               # "garmin", "strava", "polar", "manual"
+├── external_id: str             # source's own ID — deduplication key
+├── recorded_at: datetime        # when the event occurred (not ingested)
+├── ingested_at: datetime        # when we stored it
+├── payload: dict                # type-specific data, Pydantic-validated
+└── is_embeddable: bool          # whether this record goes to ChromaDB
+
+RecordType:
+  ACTIVITY       # GPS, HR, power, cadence, elevation
+  SLEEP          # stages, HRV, SPO2, duration, score
+  BODY_METRICS   # weight, body fat, VO2max, bone mass
+  USER_SETTINGS  # HR zones, FTP, age, height, units preference
+  USER_PROFILE   # static/sensitive: blood type, medical notes — encrypted
+```
+
+Pydantic discriminated unions validate the payload at ingestion boundary. If a payload does not conform to its declared `record_type` schema, it is rejected before touching PostgreSQL.
+
+#### PostgreSQL storage: hybrid fixed + JSONB
+
+A single `tracking_records` table with fixed columns for indexed/constrained fields and JSONB for the type-specific payload:
+
+```sql
+CREATE TABLE tracking_records (
+    id            BIGSERIAL PRIMARY KEY,
+    user_uuid     UUID NOT NULL REFERENCES users(user_uuid),
+    record_type   TEXT NOT NULL,
+    source_id     TEXT NOT NULL,
+    external_id   TEXT NOT NULL,
+    recorded_at   TIMESTAMPTZ NOT NULL,
+    ingested_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
+    payload       JSONB NOT NULL,
+    UNIQUE (user_uuid, source_id, external_id)
+);
+```
+
+The `UNIQUE (user_uuid, source_id, external_id)` constraint makes every sync operation idempotent: `INSERT ... ON CONFLICT DO NOTHING`. The same poll can run ten times without data corruption or duplicate records.
+
+New `RecordType` values require no migration — only a new Pydantic model for payload validation, a corresponding `is_embeddable` rule, and (if indexed queries are needed on a payload field) an optional functional index on the JSONB column.
+
+#### What goes to ChromaDB
+
+Not all `TrackingRecord` types carry semantic meaning suitable for embedding:
+
+| RecordType | PostgreSQL | ChromaDB |
+|---|---|---|
+| `ACTIVITY` | ✅ | ✅ semantic search, pattern matching |
+| `SLEEP` | ✅ | ✅ longitudinal patterns |
+| `BODY_METRICS` | ✅ | ❌ time series, no semantic value |
+| `USER_SETTINGS` | ✅ | ❌ |
+| `USER_PROFILE` | ✅ (encrypted fields) | ❌ |
+
+`is_embeddable=True` on a `TrackingRecord` triggers automatic queuing for the embedding pipeline after PostgreSQL persist. The embedding pipeline is decoupled from ingestion — it reads from a queue, not from the ingestion path directly.
+
+#### The `IDataSource` port
+
+```python
+class IDataSource(Protocol):
+    source_id: str  # matches source_id in TrackingRecord
+
+    async def fetch_since(
+        self, user: UserContext, since: datetime
+    ) -> list[RawRecord]: ...
+
+    async def normalize(self, raw: RawRecord) -> TrackingRecord: ...
+
+    async def check_connection(self, user: UserContext) -> ConnectionStatus: ...
+```
+
+The pipeline calls only this interface. Adding a new data source = one new adapter class implementing `IDataSource`. No pipeline changes, no new tables.
+
+#### Garmin via `garth`: polling as the primary data path
+
+`garth` provides access to raw Garmin data: FIT files, per-second HR streams, full GPS tracks, historical data as far back as Garmin stores. This is the data AthleteCanvas needs for embedding and analysis. The Garmin Health API (webhook/push partnership) delivers only processed summaries and does not expose raw FIT files or detailed streams — it is a subset of what `garth` provides.
+
+`garth` polling is therefore the primary Garmin adapter, not a temporary workaround. Each poll:
+1. Loads the encrypted `garth` session from `ITokenStore`
+2. Fetches records since last successful sync timestamp
+3. On `SessionExpiredError`: marks source as `disconnected`, enqueues user notification ("Reconnect Garmin"), aborts
+4. On success: normalizes to `TrackingRecord` list, writes updated session state back to `ITokenStore`
+
+The Garmin Health API is an optional future upgrade path: it could serve as a real-time webhook trigger that initiates a `garth` fetch immediately rather than waiting for the next scheduled poll. This requires no architectural changes — it is one more trigger type feeding the same queue.
+
+#### Background task queue: ARQ over Celery
+
+ARQ (async-first Redis queue, MIT license) is chosen over Celery. Celery was designed for synchronous Python and adds broker-configuration complexity that does not fit the async FastAPI stack. ARQ integrates natively with `asyncio`, requires only Redis, and is sufficient for the load profile of a personal/small multi-user platform.
+
+Three trigger paths for sync jobs:
+
+| Trigger | Path | Notes |
+|---|---|---|
+| **Scheduled** | ARQ cron, configurable interval (default 30 min) per active user + source | Runs even when user is not active |
+| **User-initiated** | `POST /sync/{source_id}` → enqueue → `202 Accepted` | UI "refresh" button |
+| **Activation-based** | App foreground event → API call → enqueue | Debounced: max 1 job per user per source per 60s to prevent queue flooding |
+
+#### Adapter implementation priority
+
+1. **Garmin (`garth` polling)** — first working demo; existing personal data available immediately
+2. **Strava (OAuth2 + webhook)** — real-time, second largest activity dataset
+3. **Polar / Fitbit / Withings** — same OAuth2 + webhook pattern as Strava; marginal cost per additional adapter is low once the webhook receiver infrastructure exists
+4. **Apple Health / Google Health Connect** — native SDK adapters, mobile-only, separate epic
+
 ## Related Documentation
 - **[docs/planning/issue1/research.md][related-1]**
 - **[docs/planning/issue1/planning.md][related-2]**
