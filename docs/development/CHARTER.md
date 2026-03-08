@@ -179,22 +179,21 @@ De gebruiker verlaat het platform met alles wat van hem is. Data-export is een k
 
 ## North Star
 
-> **"We slagen als de gebruiker de app sluit met een antwoord — niet opent om te scrollen."**
+> **"We slagen als de gebruiker de app sluit met meer inzicht of meer tijd — niet opent om te scrollen."**
 
-Dit is de toetssteen voor elke productkeuze. Niet hoeveel mensen dagelijks actief zijn. Niet hoe lang een sessie duurt. Niet hoeveel notificaties geopend worden. Maar of de gebruiker na interactie met het platform iets begrijpt over zichzelf dat hij daarvoor niet begreep.
+Dit is de toetssteen voor elke productkeuze. De waarde die wij leveren is tweeledig: eerlijk begrip van zichzelf, en teruggewonnen tijd voor het echte leven. Beide zijn gelegitimeerde redenen om het platform te gebruiken. Alles wat daarbuiten valt — aandacht oogsten, binding creëren, aanwezigheid meten — is niet onze zaak.
 
 **Wat dit betekent in de praktijk:**
 - Een week zonder app-open, maar met drie inzichten die gedrag veranderd hebben → succes
-- Dagelijks inloggen zonder dat er iets geleerd wordt → mislukking
-- Een gebruiker die het platform verlaat omdat hij zichzelf genoeg begrijpt om zonder te kunnen → het beste dat ons kan overkomen
+- Boodschappen doen in twee minuten omdat het platform de brug bouwt → succes
+- Dagelijks inloggen zonder dat er iets geleerd of gewonnen wordt → mislukking
+- Een gebruiker die vertrekt omdat hij zichzelf genoeg begrijpt om zonder te kunnen → het beste dat ons kan overkomen
 
-**Wat we dus niet meten als succes:**
-Daily Active Users, sessieduur, push-open-rate, streak-lengte, feature-adoption-rate als doel op zich.
+**Wat we niet meten als succes:**
+Daily Active Users, sessieduur, push-open-rate, streak-lengte.
 
 **Wat we wél meten:**
-Eigen baseline-begrip (verbetert de gebruiker zijn voorspellend inzicht over eigen energie, slaap en prestatie over tijd?), datakwaliteit (worden er verbanden gelegd die daarvoor onzichtbaar waren?), en vertrouwen (blijft de gebruiker — niet omdat hij gevangen zit, maar omdat het platform hem iets blijft geven).
-
-Terugkomen voor tijdsbesparing is missie-congruent. Terugkomen omdat je vastzit is stille binding. Het verschil is altijd het criterium.
+Groeit het zelfbegrip van de gebruiker over tijd? Wint hij aantoonbaar tijd terug op taken die niets met zelfkennis te maken hebben? Blijft hij omdat het platform hem iets geeft — niet omdat hij vastzit?
 
 ---
 
