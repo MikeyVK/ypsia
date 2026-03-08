@@ -216,7 +216,7 @@ Onze oplossing is niet de spanning wegpoetsen. Het is de financieringsstructuur 
 De basisinfrastructuur is open source en zelf te hosten: data-ingestie, lokale opslag, basisvisualisatie, volledige data-export. Wie vertrouwen wil opbouwen voordat hij betaalt, kan dat. Wie zijn eigen server wil draaien, kan dat. De open core is geen demo — het is een volledig bruikbare eerste laag.
 
 **Laag 2 — Personal tier (betaald abonnement)**
-AI-inzichten, kruisbronanalyse, Truth Engine, aandachtsdieet-correlaties, geavanceerde journaalanalyse, prioriteitsondersteuning — inclusief uitvoeringsfeatures die uit inzicht voortvloeien. Dit is de kern van het businessmodel: een eerlijk abonnement voor mensen die de volledige waarde willen en bereid zijn er direct voor te betalen. Wij verdienen uitsluitend aan de gebruiker — nooit aan een externe partij die anders een tweede meester zou worden.
+AI-inzichten, kruisbronanalyse, Truth Engine, aandachtsdieet-correlaties, geavanceerde journaalanalyse, prioriteitsondersteuning — inclusief uitvoeringsfeatures die uit inzicht voortvloeien. Dit is de kern van het businessmodel: een eerlijk abonnement voor mensen die de volledige waarde willen en bereid zijn er direct voor te betalen. Wij verdienen uitsluitend aan de waarde die de gebruiker aan ons platform toekent — nooit aan een externe partij.
 
 Geen freemium-valkuil waarbij de gratis laag bewust gebrekkig is om conversie te forceren. De gratis laag is eerlijk compleet voor basiszelfkennis. De betaalde laag is eerlijk meer — niet minder gratis als drukfactor.
 
