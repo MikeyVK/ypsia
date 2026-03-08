@@ -194,8 +194,7 @@ Daily Active Users, sessieduur, push-open-rate, streak-lengte, feature-adoption-
 **Wat we wél meten:**
 Eigen baseline-begrip (verbetert de gebruiker zijn voorspellend inzicht over eigen energie, slaap en prestatie over tijd?), datakwaliteit (worden er verbanden gelegd die daarvoor onzichtbaar waren?), en vertrouwen (blijft de gebruiker — niet omdat hij gevangen zit, maar omdat het platform hem iets blijft geven).
 
-**De toets voor convenience features:**
-Sommige features brengen de gebruiker terug zonder inzicht te leveren — een wekelijkse boodschappenlijst, een bestellingsintegratie. Dat is niet per definitie fout: als de feature actief tijd bespaart, is dat missie-congruent. De toets is niet *waarom* de gebruiker terugkomt, maar *wat hij kwijt is als we die feature weghalen*. Is het antwoord "hij zou meer tijd kwijt zijn aan iets dat niets met zelfkennis te maken heeft" — dan mag de feature bestaan. Is het antwoord "hij zou minder aan de app gebonden zijn" — dan is het stille binding en hoort de feature er niet in.
+Terugkomen voor tijdsbesparing is missie-congruent. Terugkomen omdat je vastzit is stille binding. Het verschil is altijd het criterium.
 
 ---
 
