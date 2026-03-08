@@ -226,6 +226,38 @@ Read-access op expliciete uitnodiging van de gebruiker. Coaches die hun atleten 
 **Laag 4 — Creator economy (platformfee op sovereign subscriptions)**
 Creators die hun publiek een betaalde laag aanbieden via het platform (data-verrijkte werkprocessen, diepere dagboeken, procesverslagen) dragen een kleine platformfee af. Minimaal, transparant, en creators bezitten hun eigen publiek volledig — geen lock-in.
 
+**Laag 5 — Convenience fees op gebruikersinitiatief**
+Zie aparte sectie hieronder.
+
+---
+
+### Laag 5 — Convenience fees: gemak of tweede meester?
+
+Dit is de meest genuanceerde revenuebron — en de plek waar de meeste platforms met vergelijkbare ambities alsnog de fout ingaan. Daarom verdient het een eigen behandeling.
+
+**Wat het is:**
+De gebruiker heeft een voedingsplan, een boodschappenlijst gegenereerd vanuit zijn macro-doelen, of een supplement-stack die hij maandelijks bestelt. Het platform legt de brug naar zijn favoriete winkel — AH, Picnic, Flink, BodyFit, of een andere keuze — en verdient een transparante convenience fee op de bestelling die de gebruiker al had willen plaatsen.
+
+**Waarom dit verschilt van adverteren:**
+Advertenties creëren vraag die er nog niet was, gericht met data die de gebruiker niet bewust deelde voor dat doel. Een convenience fee faciliteert een beslissing die al genomen was. Het platform is het gereedschap, niet de verkoper.
+
+Het verschil is niet slechts gradueel — het is structureel. De intentie ligt bij de gebruiker; wij bouwen de brug.
+
+**De voorwaarden waaronder dit congruent blijft met de missie:**
+
+1. **Pull, nooit push.** De winkelintegratie wordt geactiveerd door een gebruikersactie — "zet dit in mijn boodschappenlijst" — nooit door een proactieve productaanbeveling vanuit het platform. Wij steken nooit de hand uit.
+
+2. **Platformagnostisch.** De gebruiker kiest zijn eigen winkel. Wij bewaren geen voorkeur op basis van commissiepercentage. AH, Picnic, Flink en BodyFit liggen naast elkaar — ongeacht wat wij per platform verdienen.
+
+3. **Aanbevelingen zijn commissie-blind.** Welke producten verschijnen in de gesuggereerde boodschappenlijst wordt uitsluitend bepaald door de voedings- en supplementdata van de gebruiker. Nooit door een affiliate-deal. Dit is architectureel afgedwongen, niet beleidsmatig beloofd.
+
+4. **De fee is zichtbaar.** Wie wil weten dat het platform een vergoeding ontvangt op zijn bestelling, kan dat zien. Geen verborgen verdienmodel achter een "gratis" functie.
+
+5. **Geen exclusiviteitsdeals.** We gaan geen exclusieve partnerships aan die ons dwingen één platform te bevoordelen of bepaalde producten prominent te plaatsen in ruil voor hogere fees.
+
+**De grens:**
+Zodra de commissiestructuur begint te sturen wat wij de gebruiker tonen of aanbevelen — is de tweede meester er. Dat is de lijn. We bewaken hem architectureel, niet via intentie.
+
 ---
 
 ### Wat we nooit doen voor geld
@@ -253,3 +285,4 @@ Dat is het model. Niet perfect. Maar eerlijk.
 |--------|-------|-----------|
 | 0.1 | 2026-03-08 | Purpose, Gebruiker, Mission, Vision vastgelegd via interview |
 | 0.2 | 2026-03-08 | The Problem, Value Proposition, Principles, Anti-Principles, North Star, Business Model Commitment toegevoegd — charter compleet |
+| 0.3 | 2026-03-08 | Business Model: Laag 5 convenience fees toegevoegd met expliciete missie-toets en architecturele voorwaarden |
