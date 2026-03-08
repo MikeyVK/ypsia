@@ -216,7 +216,7 @@ Onze oplossing is niet de spanning wegpoetsen. Het is de financieringsstructuur 
 De basisinfrastructuur is open source en zelf te hosten: data-ingestie, lokale opslag, basisvisualisatie, volledige data-export. Wie vertrouwen wil opbouwen voordat hij betaalt, kan dat. Wie zijn eigen server wil draaien, kan dat. De open core is geen demo — het is een volledig bruikbare eerste laag.
 
 **Laag 2 — Personal tier (betaald abonnement)**
-AI-inzichten, kruisbronanalyse, Truth Engine, aandachtsdieet-correlaties, geavanceerde journaalanalyse, prioriteitsondersteuning. Dit is de kern van het businessmodel: een eerlijk abonnement voor mensen die de volledige waarde willen en bereid zijn er direct voor te betalen.
+AI-inzichten, kruisbronanalyse, Truth Engine, aandachtsdieet-correlaties, geavanceerde journaalanalyse, prioriteitsondersteuning — inclusief uitvoeringsfeatures die uit inzicht voortvloeien. Dit is de kern van het businessmodel: een eerlijk abonnement voor mensen die de volledige waarde willen en bereid zijn er direct voor te betalen. Wij verdienen uitsluitend aan de gebruiker — nooit aan een externe partij die anders een tweede meester zou worden.
 
 Geen freemium-valkuil waarbij de gratis laag bewust gebrekkig is om conversie te forceren. De gratis laag is eerlijk compleet voor basiszelfkennis. De betaalde laag is eerlijk meer — niet minder gratis als drukfactor.
 
@@ -225,9 +225,6 @@ Read-access op expliciete uitnodiging van de gebruiker. Coaches die hun atleten 
 
 **Laag 4 — Creator economy (platformfee op sovereign subscriptions)**
 Creators die hun publiek een betaalde laag aanbieden via het platform (data-verrijkte werkprocessen, diepere dagboeken, procesverslagen) dragen een kleine platformfee af. Minimaal, transparant, en creators bezitten hun eigen publiek volledig — geen lock-in.
-
-**Convenience als abonnementswaarde — nooit als affiliate**
-Uitvoeringsfeatures die voortvloeien uit inzicht — zoals het exporteren of doorsturen van een boodschappenlijst — horen thuis in een betaald abonnementstier, nooit in een affiliate-constructie met een externe partij. De basisexport is altijd gratis: de gebruiker kan zijn lijst altijd meenemen, uitprinten of importeren waar hij wil. Diepere integraties zijn abonnementsgefinancierd. Zo verdienen wij uitsluitend aan de gebruiker die waarde erkent — nooit aan de grocer die een tweede meester zou worden.
 
 ---
 
