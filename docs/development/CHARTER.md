@@ -92,31 +92,158 @@ De mens die zichzelf eerlijk wil begrijpen heeft geen gebrek aan data. Hij heeft
 
 ## Value Proposition
 
-*Wordt uitgewerkt na The Problem.*
+*Wat bieden wij, voor wie, en waarom is dat beter dan het alternatief?*
+
+**Voor de bewuste mens** die meer data over zichzelf heeft dan ooit, maar geen platform vertrouwt om die eerlijk te interpreteren.
+
+**Bieden wij** één plek waar alle persoonlijke data samenkomt — beweging, slaap, energie, stemming, digitale gewoonten, omgeving — en waar een eerlijke AI dat omzet in inzicht. Niet in een score die je terugbrengt. Niet in een streak die je gevangen houdt. In een antwoord op de vraag die je zelf stelde.
+
+**Het verschil met alternatieven:**
+
+| Alternatief | Probleem |
+|---|---|
+| Garmin Connect / Oura / Strava | Silo-data, eigen ecosysteem, geen kruisverbanden |
+| Apple Health / Google Health | Aggregator, geen intelligentie, platform-agenda |
+| ChatGPT / AI-assistenten | Geen toegang tot jouw data, geen continuïteit, geen geheugen van jou |
+| Therapie / coaching | Duur, beperkt beschikbaar, subjectief, geen data-grond |
+| Niets doen | De chaos wint |
+
+**Wij zijn het enige platform dat:**
+- Alle bronnen combineert zonder vendor lock-in
+- Analyse levert zonder engagement-model — er is geen incentive om je langer dan nodig te houden
+- Jouw data lokaal-eerst behandelt met cryptografisch verifieerbare eigendomsrechten
+- Eerlijk is ook als het antwoord ongemakkelijk is — geen positivity filter, geen gamification van gezondheid
+- Gebouwd is op open kerncode die door iedereen gecontroleerd kan worden
+
+**De belofte in één zin:**
+*Wij maken jouw data zo eerlijk leesbaar dat je er beslissingen op durft te baseren — zonder twijfel over wiens belang er gediend wordt.*
 
 ---
 
 ## Principles
 
-*Wordt uitgewerkt — de onwrikbare geloofsovertuigingen die elke beslissing toetsen.*
+*De onwrikbare geloofsovertuigingen die elke beslissing toetsen. Elk feature, elke architectuurkeuze, elke business-beslissing wordt hieraan geijkt. Als iets hieraan twijfeld — het gaat niet door.*
+
+**Principe 1 — Eigenaarschap is absoluut.**
+Jouw data is van jou. Jouw inzichten zijn van jou. Jouw conclusies zijn van jou. Het platform is een instrument, geen eigenaar. De gebruiker kan op elk moment vertrekken met alles wat van hem is — inclusief zijn AI-geschiedenis, zijn reflecties en zijn ruwe data — in een open formaat dat hij zelf kan lezen.
+
+**Principe 2 — Eerlijkheid boven comfort.**
+De AI toont wat de data zegt, ook als dat ongemakkelijk is. Geen positivity filter. Geen sugarcoating. Geen optimistische herformulering van een slecht herstelpatroon. De gebruiker die de waarheid zoekt verdient een tool die de waarheid vertelt.
+
+**Principe 3 — Inzicht is het doel — niet betrokkenheid.**
+Succes betekent dat de gebruiker de app minder nodig heeft, niet meer. Elk feature wordt beoordeeld op de vraag: *helpt dit de gebruiker beter te begrijpen, of trekt het hem langer in de app?* Schermtijd is nooit een succesmetric. Widgets bestaan om app-opens te vervangen.
+
+**Principe 4 — Ethische keuzes zitten in de architectuur — niet in de gebruiksvoorwaarden.**
+Zero-engagement, cryptografische data-deletie, absence van een aanbevelingsalgoritme — dit zijn technische eigenschappen van het systeem, geen beleidsbeloften. De code is open en controleerbaar. Als we het niet in de code kunnen afdwingen, beloven we het niet.
+
+**Principe 5 — De non-atleet is eerste klasse.**
+Sport is een invalshoek, geen kern. Elk feature werkt ook voor wie niet sport, niet wil sporten, of nooit gespord heeft. Een kenniswerker, een mantelzorger, iemand die herstelt van burnout — zij zijn even legitieme gebruikers als de marathonloper. Elk ontwerp wordt getoetst: *werkt dit ook zonder een enkel sportapparaat?*
+
+**Principe 6 — Transparantie als default.**
+Het businessmodel is op elk moment leesbaar en eenvoudig. De AI-redenering is inzichtelijk. De open core is auditeerbaar. We verbergen niets achter complexiteit, juridisch jargon of algoritmen die niemand inspecteert. Wie wil begrijpen hoe het werkt, kan dat.
+
+**Principe 7 — Menselijke werkelijkheid boven hoogtepunten.**
+We bouwen voor het echte leven — voor de slechte dag, het gebroken week, de periode dat overleven genoeg is. Een profiel is geen etalage van prestaties; het is een eerlijk logboek van een mens. Data die de werkelijkheid toont, ook als die onflatterend is, heeft meer waarde dan data die verzwegen wordt.
+
+**Principe 8 — Toestemming is altijd expliciet, altijd intrekbaar.**
+Elke vorm van datadeling, sociale interactie of externe integratie is opt-in. Nooit stilzwijgend aangenomen, nooit standaard aan. De gebruiker die toestemming geeft begrijpt wat hij geeft — en kan het op elk moment terugnemen zonder verlies van zijn eigen data.
 
 ---
 
 ## Anti-Principles
 
-*Wordt uitgewerkt — wat we bewust nooit worden. Minstens net zo belangrijk als de principles.*
+*Wat we bewust nooit worden. Minstens net zo belangrijk als de Principles — want de meeste platforms zijn niet gecorrumpeerd door slechte intenties, maar door het vergeten van grenzen die ze nooit expliciet getrokken hadden.*
+
+**Nooit: een engagement-model.**
+We optimaliseren nooit op schermtijd, DAU, sessieduur, streak-completions of notificatie-clicks. Die metrics bestaan niet als intern doel. Zodra iemand zegt "we moeten gebruikers langer in de app houden" — is dat het signaal dat we de verkeerde richting ingaan.
+
+**Nooit: data-handel.**
+Persoonlijke gezondheidsdata, gedragsdata en sociale data worden nooit verkocht, verhuurd, of gebruikt voor het targeten van advertenties — direct of indirect, intern of via derden. Niet nu, niet onder nieuwe eigendomsstructuur, niet via kruisgebruik met andere producten.
+
+**Nooit: externe aandeelhouders met andere belangen.**
+Geen venture capital met exit-verplichting. Geen overname door een partij wiens businessmodel haaks staat op eigenaarschap en transparantie. Groei wordt gefinancierd door de gebruikers die het platform waardevol vinden — niet door investeerders die rendement eisen.
+
+**Nooit: een AI die naar de mond praat.**
+De AI is geen coach die je aanmoedigt, geen therapeut die je valideert, geen feed die je gelukkig houdt. De AI is een eerlijk analysemodel dat verbanden toont en afwijkingen signaleert — ook als de gebruiker er niet blij van wordt. Geen positieve bias ingebakken in het model.
+
+**Nooit: een diagnostisch oordeel.**
+We meten, we leggen verbanden, we signaleren afwijkingen van eigen baseline. We stellen geen diagnoses, schrijven geen behandelingen voor, en moraliseren niet over leefstijlkeuzes. "Je slaapt structureel te weinig" is een observatie. "Je moet eerder naar bed" is een oordeel. Het eerste is ons werk. Het tweede niet.
+
+**Nooit: algoritmische virality.**
+Geen aanbevelingsalgoritme. Geen "mensen die je misschien kent". Geen "trending content". Geen For You. Ontdekking is altijd intentioneel — via directe link, expliciete zoekopdracht, of persoonlijke uitnodiging. Viraliteit is architectureel onmogelijk, niet beleidsmatig verboden.
+
+**Nooit: vendor lock-in.**
+De gebruiker verlaat het platform met alles wat van hem is. Data-export is een kerneigenschap, geen support-ticket. Het formaat is open en leesbaar zonder onze software. Een gebruiker die vertrekt omdat hij iets beters vindt — dat is een goed resultaat. Een gebruiker die blijft omdat hij gevangen zit — dat is een mislukking.
 
 ---
 
 ## North Star
 
-*Wordt uitgewerkt — één zin: hoe meten we succes?*
+> **"We slagen als de gebruiker de app sluit met een antwoord — niet opent om te scrollen."**
+
+Dit is de toetssteen voor elke productkeuze. Niet hoeveel mensen dagelijks actief zijn. Niet hoe lang een sessie duurt. Niet hoeveel notificaties geopend worden. Maar of de gebruiker na interactie met het platform iets begrijpt over zichzelf dat hij daarvoor niet begreep.
+
+**Wat dit betekent in de praktijk:**
+- Een week zonder app-open, maar met drie inzichten die gedrag veranderd hebben → succes
+- Dagelijks inloggen zonder dat er iets geleerd wordt → mislukking
+- Een gebruiker die het platform verlaat omdat hij zichzelf genoeg begrijpt om zonder te kunnen → het beste dat ons kan overkomen
+
+**Wat we dus niet meten als succes:**
+Daily Active Users, sessieduur, push-open-rate, streak-lengte, feature-adoption-rate als doel op zich.
+
+**Wat we wél meten:**
+Eigen baseline-begrip (verbetert de gebruiker zijn voorspellend inzicht over eigen energie, slaap en prestatie over tijd?), datakwaliteit (worden er verbanden gelegd die daarvoor onzichtbaar waren?), en vertrouwen (blijft de gebruiker — niet omdat hij gevangen zit, maar omdat het platform hem iets blijft geven).
 
 ---
 
 ## Business Model Commitment
 
-*Wordt uitgewerkt — hoe we duurzaam zijn zonder onze ziel te verkopen.*
+*Hoe we duurzaam zijn zonder onze ziel te verkopen. En waarom het businessmodel zelf een uitdrukking van de missie is — niet een compromis eraan.*
+
+---
+
+### De spanning die opgelost moet worden
+
+Elk eerlijk platform raakt vroeg of laat dezelfde muur: *groeien kost geld, geld komt van investeerders of van gebruikers, en investeerders willen rendement op schaal.* Die schaal wordt doorgaans bereikt via engagement, via data, of via netwerken — alle drie staan haaks op wat wij zijn.
+
+Onze oplossing is niet de spanning wegpoetsen. Het is de financieringsstructuur zo kiezen dat de spanning er architectureel niet meer in zit.
+
+---
+
+### Het model
+
+**Laag 1 — Open core (gratis, voor altijd)**
+De basisinfrastructuur is open source en zelf te hosten: data-ingestie, lokale opslag, basisvisualisatie, volledige data-export. Wie vertrouwen wil opbouwen voordat hij betaalt, kan dat. Wie zijn eigen server wil draaien, kan dat. De open core is geen demo — het is een volledig bruikbare eerste laag.
+
+**Laag 2 — Personal tier (betaald abonnement)**
+AI-inzichten, kruisbronanalyse, Truth Engine, aandachtsdieet-correlaties, geavanceerde journaalanalyse, prioriteitsondersteuning. Dit is de kern van het businessmodel: een eerlijk abonnement voor mensen die de volledige waarde willen en bereid zijn er direct voor te betalen.
+
+Geen freemium-valkuil waarbij de gratis laag bewust gebrekkig is om conversie te forceren. De gratis laag is eerlijk compleet voor basiszelfkennis. De betaalde laag is eerlijk meer — niet minder gratis als drukfactor.
+
+**Laag 3 — B2B: coaches, zorgprofessionals, onderzoekers (betaald)**
+Read-access op expliciete uitnodiging van de gebruiker. Coaches die hun atleten begrijpen. Huisartsen die context zien die de patiënt zelf aanlevert. Onderzoekers die werken met geanonimiseerde, opt-in datasets. De gebruiker heeft altijd controle: wie mag zien wat, en voor hoe lang. De B2B-inkomsten zijn additioneel — ze bestaan omdat de gebruiker er zelf voor kiest.
+
+**Laag 4 — Creator economy (platformfee op sovereign subscriptions)**
+Creators die hun publiek een betaalde laag aanbieden via het platform (data-verrijkte werkprocessen, diepere dagboeken, procesverslagen) dragen een kleine platformfee af. Minimaal, transparant, en creators bezitten hun eigen publiek volledig — geen lock-in.
+
+---
+
+### Wat we nooit doen voor geld
+
+- **Geen advertenties** — ook niet contextueel, ook niet "non-gepersonaliseerd". Elke advertentie creëert een tweede meester.
+- **Geen data-verkoop** — aan niemand, onder geen enkele constructie, ook niet geanonimiseerd zonder expliciete opt-in per gebruiker per gebruik.
+- **Geen VC-ronde met exit-verplichting** — bootstrapped of community-gefinancierd. Zodra er een aandeelhouder is die rendement eist op een tijdlijn die conflicteert met de missie, is de missie in gevaar.
+- **Geen zorgverzekeraarsmodel zonder cryptografisch verifieerbare gebruikerscontrole** — het idee van premiekortingen in ruil voor data is verleidelijk maar structureel gevaarlijk. Als we het ooit aanraken, is het uitsluitend op basis van volledig verifieerbare opt-in, per datapunt, intrekbaar per dag.
+
+---
+
+### Hoe de frictie verdwijnt
+
+De meeste platforms draaien op engagement omdat hun investeerders rendement meten via actieve gebruikers. Wij meten succes via iets anders — zie North Star. De financiering via abonnement maakt dat congruent: een gebruiker die betaalt voor inzicht, betaalt niet voor schermtijd. Zijn abonnement loopt door zolang het platform hem waarde levert. Die waarde is inzicht — niet aanwezigheid.
+
+**Dat betekent:** elke feature die meer betrokkenheid creëert zonder meer inzicht te leveren is commercieel zinloos voor ons. De business-incentive en de missie-incentive wijzen voor het eerst in dezelfde richting.
+
+Dat is het model. Niet perfect. Maar eerlijk.
 
 ---
 
@@ -125,3 +252,4 @@ De mens die zichzelf eerlijk wil begrijpen heeft geen gebrek aan data. Hij heeft
 | Versie | Datum | Wijziging |
 |--------|-------|-----------|
 | 0.1 | 2026-03-08 | Purpose, Gebruiker, Mission, Vision vastgelegd via interview |
+| 0.2 | 2026-03-08 | The Problem, Value Proposition, Principles, Anti-Principles, North Star, Business Model Commitment toegevoegd — charter compleet |
