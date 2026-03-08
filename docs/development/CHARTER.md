@@ -194,6 +194,9 @@ Daily Active Users, sessieduur, push-open-rate, streak-lengte, feature-adoption-
 **Wat we wél meten:**
 Eigen baseline-begrip (verbetert de gebruiker zijn voorspellend inzicht over eigen energie, slaap en prestatie over tijd?), datakwaliteit (worden er verbanden gelegd die daarvoor onzichtbaar waren?), en vertrouwen (blijft de gebruiker — niet omdat hij gevangen zit, maar omdat het platform hem iets blijft geven).
 
+**De toets voor convenience features:**
+Sommige features brengen de gebruiker terug zonder inzicht te leveren — een wekelijkse boodschappenlijst, een bestellingsintegratie. Dat is niet per definitie fout: als de feature actief tijd bespaart, is dat missie-congruent. De toets is niet *waarom* de gebruiker terugkomt, maar *wat hij kwijt is als we die feature weghalen*. Is het antwoord "hij zou meer tijd kwijt zijn aan iets dat niets met zelfkennis te maken heeft" — dan mag de feature bestaan. Is het antwoord "hij zou minder aan de app gebonden zijn" — dan is het stille binding en hoort de feature er niet in.
+
 ---
 
 ## Business Model Commitment
@@ -226,37 +229,8 @@ Read-access op expliciete uitnodiging van de gebruiker. Coaches die hun atleten 
 **Laag 4 — Creator economy (platformfee op sovereign subscriptions)**
 Creators die hun publiek een betaalde laag aanbieden via het platform (data-verrijkte werkprocessen, diepere dagboeken, procesverslagen) dragen een kleine platformfee af. Minimaal, transparant, en creators bezitten hun eigen publiek volledig — geen lock-in.
 
-**Laag 5 — Convenience fees op gebruikersinitiatief**
-Zie aparte sectie hieronder.
-
----
-
-### Laag 5 — Convenience fees: gemak of tweede meester?
-
-Dit is de meest genuanceerde revenuebron — en de plek waar de meeste platforms met vergelijkbare ambities alsnog de fout ingaan. Daarom verdient het een eigen behandeling.
-
-**Wat het is:**
-De gebruiker heeft een voedingsplan, een boodschappenlijst gegenereerd vanuit zijn macro-doelen, of een supplement-stack die hij maandelijks bestelt. Het platform legt de brug naar zijn favoriete winkel — AH, Picnic, Flink, BodyFit, of een andere keuze — en verdient een transparante convenience fee op de bestelling die de gebruiker al had willen plaatsen.
-
-**Waarom dit verschilt van adverteren:**
-Advertenties creëren vraag die er nog niet was, gericht met data die de gebruiker niet bewust deelde voor dat doel. Een convenience fee faciliteert een beslissing die al genomen was. Het platform is het gereedschap, niet de verkoper.
-
-Het verschil is niet slechts gradueel — het is structureel. De intentie ligt bij de gebruiker; wij bouwen de brug.
-
-**De voorwaarden waaronder dit congruent blijft met de missie:**
-
-1. **Pull, nooit push.** De winkelintegratie wordt geactiveerd door een gebruikersactie — "zet dit in mijn boodschappenlijst" — nooit door een proactieve productaanbeveling vanuit het platform. Wij steken nooit de hand uit.
-
-2. **Platformagnostisch.** De gebruiker kiest zijn eigen winkel. Wij bewaren geen voorkeur op basis van commissiepercentage. AH, Picnic, Flink en BodyFit liggen naast elkaar — ongeacht wat wij per platform verdienen.
-
-3. **Aanbevelingen zijn commissie-blind.** Welke producten verschijnen in de gesuggereerde boodschappenlijst wordt uitsluitend bepaald door de voedings- en supplementdata van de gebruiker. Nooit door een affiliate-deal. Dit is architectureel afgedwongen, niet beleidsmatig beloofd.
-
-4. **De fee is zichtbaar.** Wie wil weten dat het platform een vergoeding ontvangt op zijn bestelling, kan dat zien. Geen verborgen verdienmodel achter een "gratis" functie.
-
-5. **Geen exclusiviteitsdeals.** We gaan geen exclusieve partnerships aan die ons dwingen één platform te bevoordelen of bepaalde producten prominent te plaatsen in ruil voor hogere fees.
-
-**De grens:**
-Zodra de commissiestructuur begint te sturen wat wij de gebruiker tonen of aanbevelen — is de tweede meester er. Dat is de lijn. We bewaken hem architectureel, niet via intentie.
+**Affiliate-inkomsten als bijproduct van nuttige features**
+Features die de gebruiker tijd besparen — zoals boodschappenlijsten die direct naar zijn gekozen winkel gaan — kunnen een affiliate-vergoeding opleveren. Dit is een bijproduct, geen drijfveer. De test: *vermindert deze feature de tijd die de gebruiker nodig heeft voor een taak?* Als ja: de feature mag bestaan. De commissiestructuur stuurt nooit wat er getoond of aanbevolen wordt.
 
 ---
 
