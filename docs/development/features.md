@@ -1,14 +1,27 @@
 <!-- docs\development\features.md -->
 <!-- template=research version=8b7bb3ab created=2026-03-07T15:58Z updated=2026-03-07 -->
-# AthleteCanvas Feature Backlog
+# Feature Backlog
 
-**Status:** DRAFT | **Version:** 3.5 | **Last Updated:** 2026-03-07
+> **Werknaam:** Project Sovereign · BaseLine · Vita *(definitieve naam volgt na manifest)*
+> **Vorige werknaam:** AthleteCanvas — te smal voor de bredere doelgroep; wordt niet meer gebruikt als productnaam in dit document.
+
+**Status:** DRAFT | **Version:** 4.0 | **Last Updated:** 2026-03-08
+
+---
+
+## Kernidentiteit
+
+Dit is geen sportenapp. De bewuste mens staat centraal — iemand die regie wil over zijn biologische en cognitieve bandbreedte, ongeacht of hij sporter, kenniswerker, maker, ouder, of chronisch ziek is.
+
+Het eerste product-vertrekpunt is de serieuze sporter (omdat dat de eerste gebruiker is en de rijkste databron), maar sport is een *toegangspoort*, geen *eindbestemming*. Elk feature, elk cluster wordt getoetst aan de vraag: past dit ook voor wie niet sport?
+
+De filosofie Is het product. Technologie is de verpakking.
 
 ---
 
 ## How to Use This Document
 
-Living product discovery document. What AthleteCanvas should **do** — from the user's perspective, not an engineer's. No architecture, no implementation scope, no sprint references.
+Living product discovery document. What this platform should **do** — from the user's perspective, not an engineer's. No architecture, no implementation scope, no sprint references.
 
 **Flags:** `⚠️` arch-review needed · `💭` brainfart/unvalidated · `R:` Requires another feature first
 
@@ -40,6 +53,13 @@ Living product discovery document. What AthleteCanvas should **do** — from the
 | 11 | [Coach & Professional Portal](#cluster-11--coach--professional-portal) | B2B coach portaal, fysiotherapeut view, multi-atleet beheer |
 | 12 | [Monetisatie & Partnerships](#cluster-12--monetisatie--partnerships) | Subscription model, affiliate/partner programma, early adopter strategie |
 | 13 | [Journal & Reflection](#cluster-13--journal--reflection) | Data-aware journaling, AI journaalpartner, habit tracker, cognitieve performance, journal mode |
+| 14 | [Informatie- & Aandachtsdieet](#cluster-14--informatie---aandachtsdieet) | Cognitive load tracking, doomscroll-correlator, informatie macro's, flow-detectie |
+| 15 | [Digitale Soevereiniteit & Offline Beloningen](#cluster-15--digitale-soevereiniteit--offline-beloningen) | Slaapkamer-slot, unplugged credits, local-first processing, partner rewards |
+| 16 | [Life Capacity & Biologische Ritmes](#cluster-16--life-capacity--biologische-ritmes) | Life Battery, biologische seizoenen, work vs. recovery balance |
+| 17 | [Persoonlijke Waarheidsvinding](#cluster-17--persoonlijke-waarheidsvinding-truth-engine) | Symptoom-leugendetector, placebo tracker, omgevingsimpact, what-if simulator |
+| 18 | [Platform Architectuur & Ethiek](#cluster-18--platform-architectuur--ethiek) | Open core, zero-engagement codebase, cryptografische deletie, portable identity |
+| 19 | [Nieuwe Doelgroepen](#cluster-19--nieuwe-doelgroepen) | Neurodivergent, chronisch ziek, creatieve makers, survival ouders |
+| 20 | [Anti-Viral Social Sanctuary](#cluster-20--anti-viral-social-sanctuary) | Zero-discovery, context-first publishing, creator-patron model, studio profiel |
 
 ---
 
@@ -674,6 +694,137 @@ Living product discovery document. What AthleteCanvas should **do** — from the
 | Journal mode interface | Een aparte interface-modus: minimalistisch, geen widgets of grafieken, rustig kleurpalet, tekstgedreven — bewust anders dan het dashboard. | 💭 ⚠️ |
 | AI opt-in per entry | De AI-integratie is per entry opt-in: "wil je dat ik dit contextualiseer?" — niet automatisch opgedrongen; de gebruiker bepaalt wanneer de data het gesprek binnenkomt. | |
 | Offline journaling | Journal entries kunnen offline geschreven worden; sync bij herstel verbinding. | R: Offline access |
+
+---
+
+---
+
+### Cluster 14 — Informatie- & Aandachtsdieet
+
+*We tracken onze macro's voor eten. Waarom tracken we ons mentale dieet niet? Aandacht is een eindige hulpbron — en de meeste platforms roven hem.*
+
+| Feature | Beschrijving | Flags |
+|---------|-------------|-------|
+| Cognitive load integratie | Koppeling met iOS Screen Time / Android Digital Wellbeing: niet alleen "hoeveel uur scherm", maar wát — actief creëren vs. passief consumeren. | 💭 ⚠️ |
+| Doomscroll-correlator | AI legt het directe verband: "Op dagen dat je >45 min op sociale media zit, daalt je slaapkwaliteit met 12% en is je ochtend-HRV lager." Geen moraal — gewoon data. | 💭 |
+| Informatie macro's | Schermtijd gecategoriseerd als 'Junk' (socials, nieuwsfeeds, passief scrollen) vs. 'Deep Work' (lezen, creëren, coderen, leren) — het mentale equivalent van voedingscategorieën. | 💭 |
+| Focus- & flow-detectie | De app herkent periodes van 'flow': geen telefoon opgepakt, stabiele lage hartslag tijdens werk. Markeert deze als positieve biologische events — en correleert ze met slaap en herstel. | 💭 |
+| Nieuws-detox tracking | Bewust loggen van dagen zonder nieuwsconsumptie; effect op wekelijkse stress-baseline zichtbaar als correlatie, niet als prestatie-indicator. | 💭 |
+| Aandachtsbudget | Dagelijkse "aandachtsbankrekening": hoeveel diepe concentratie heb je al gebruikt, hoeveel is er nog over en waar gaat het volgende uur naartoe? | 💭 |
+| Passieve vs. actieve schermtijd trend | Langetermijntrend van de verhouding consumeren vs. produceren op scherm — verschuift het patroon naarmate je bewuster wordt? | 💭 |
+
+---
+
+### Cluster 15 — Digitale Soevereiniteit & Offline Beloningen
+
+*Softwarematige vertaling van de charging hub-visie: tijd offline is waardevol. De app beloont en maakt het zichtbaar.*
+
+| Feature | Beschrijving | Flags |
+|---------|-------------|-------|
+| Slaapkamer-slot (software zen-modus) | Instelbare tijdvensters (bijv. 21:00–07:00) waarbij de app overschakelt naar zen-modus: alleen journal bereikbaar, alle andere app-notificaties geblokkeerd. De telefoon wordt een nachtboek, niet een prikkelcentrum. | ⚠️ |
+| Unplugged Credits | Uren buiten slaaptijd waarop de telefoon niet ontgrendeld is, leveren 'Sovereign Credits' op — een persoonlijke score die toont hoe goed je loskomt van digitale afleiding. Geen gamificatie-druk; puur informerend. | 💭 |
+| Local-first / on-device processing | De app functioneert voor 90% offline. AI-analyses draaien waar mogelijk lokaal op het apparaat. Data verlaat het device alleen bij expliciete, door de gebruiker geïnitieerde sync. | ⚠️ |
+| Partner / lokale beloningen | Unplugged Credits verzilveren bij lokale 'bewuste' ondernemers (koffiezaak, boekwinkel, kapper, restaurant) die schermvrije aanwezigheid belonen via QR-check-in. De hardware-versie van de charging hub — maar puur softwarematig. | 💭 ⚠️ |
+| Device-vrije zones instellen | Gebruiker definieert locaties (thuis, werk, café) met bijbehorend aanbevolen gedragsprofiel; app past zen-modus en notificatie-instellingen automatisch aan op locatie. | 💭 |
+| Digitale soevereiniteitscore | Een wekelijkse samenvattingsscore: hoe soeverein was je deze week t.o.v. digitale afhankelijkheid? Samengesteld uit schermtijd, zen-modus-uren, offline credits en doomscroll-data. | 💭 |
+
+---
+
+### Cluster 16 — Life Capacity & Biologische Ritmes
+
+*Van "Ben ik klaar om te sporten?" naar "Ben ik klaar om te leven?" De data-gedreven persoonlijk energiemanager.*
+
+| Feature | Beschrijving | Flags |
+|---------|-------------|-------|
+| Life Battery / bandbreedte | Een holistische dagelijkse capaciteitsscore: kun je die zware vergadering aan? Heb je bandbreedte voor een creatief project vanavond? Of zit je in overlevingsmodus? Vertaalt biologische data naar dagelijkse capaciteit — niet alleen voor sporters. | |
+| Work vs. recovery balance | Agenda-koppeling analyseert het type werkdag: veel calls vs. diepe focustijd. Past avond-advies aan: "Je had 6 uur meetings. Ga niet naar een drukke sportschool — ga wandelen in het bos." | 💭 R: Agenda-integratie |
+| Biologische seizoenen | Herkenning van langetermijnritmes over jaren: "Je energieniveau dipt steevast in november. Laten we je belasting dit jaar preventief aanpassen." Circadiaan op jaarbasis. | 💭 |
+| Ziekte als reset, niet als verlies | Zodra de gebruiker 'ziek' logt, pauzeert alles. Geen dalende grafieken, geen waarschuwingen, geen gemiste-doelen-meldingen. De app schakelt over naar herstel-modus: ook dag 3 zonder activiteit wordt niet aangemerkt als slechte week. | |
+| Biologisch leeftijd vs. kalenderleeftijd | Op basis van VO2max, resting HR, slaapkwaliteit, HRV en trainingshistorie een indicatieve biologische leeftijdsschatting. Niet als cijferfetisjisme, maar als langetermijn-motivatie-inzicht. | 💭 ⚠️ |
+| Energietype-analyse | Niet iedereen haalt energie uit dezelfde dingen. De app detecteert welke activiteiten (sport, sociale interactie, creatief werk, natuur, rust) jouw biologische markers het meest herstellen — en welke uitputten. | 💭 |
+| Creatieve bandbreedtecyclus | Herkenning van wanneer het brein leeg is en produceren geen zin meer heeft — relevant voor makers, schrijvers, programmeurs. Voorkomt creatieve uitputting door het moment van push zichtbaar te maken. | 💭 |
+
+---
+
+### Cluster 17 — Persoonlijke Waarheidsvinding (Truth Engine)
+
+*Jouw data als leugendetector voor zelfbedrog, placebo's en omgevingsruis. De app helpt filteren wat écht is.*
+
+| Feature | Beschrijving | Flags |
+|---------|-------------|-------|
+| Symptoom-leugendetector | Gebruiker klaagt in journal: "Ik ben zo moe, alles is zwaar." AI antwoordt zachtjes: "Je HRV is optimaal en je hebt 8 uur geslapen. Is dit fysieke vermoeidheid, of mentale weerstand?" Niet oordelend — maar eerlijk. | 💭 ⚠️ |
+| Placebo tracker | Gebruiker start nieuw supplement, dieet of gewoonte (koud douchen, magnesium, intermittent fasting). De app vergelijkt ervaren voordelen uit het journal met harde biologische data over dezelfde periode: werkt het echt, of is het placebo? | 💭 |
+| Omgevingsimpact analyse | Correlaties tussen locatie/werkplek en gezondheid: "Op kantoor (locatie X) is je stress 20% hoger en je stappenaantal 40% lager dan op thuiswerkdagen." Zichtbaar zonder veroordeling. | |
+| "What if" levenskeuze simulator | "Wat voorspelt de data als ik stop met alcohol en een uur per dag minder op mijn telefoon zit — over een periode van 6 maanden?" Scenario's op basis van eigen historische patronen. | 💭 |
+| Zelfperceptie vs. data vergelijker | De gebruiker scoort zijn eigen week subjectief (energie, prestatie, focus) naast de objectieve metingen. Calibreert zelfkennis over tijd: leer je beter inschatten hoe je het doe? | 💭 |
+| Betrouwbaarheid van databronnen | De app toont transparant hoe betrouwbaar elke meting is: "HRV gemeten met optische sensoren is indicatief, niet klinisch. Zie het als richting, niet als diagnose." Eerlijkheid over data-limieten. | |
+| Correlatie vs. causaliteit disclaimer | Elk getoond verband wordt geframed als correlatie, niet als oorzaak. De app cultiveert datakritisch denken in plaats van blinde autoriteit door cijfers te claimen. | |
+
+---
+
+### Cluster 18 — Platform Architectuur & Ethiek
+
+*De filosofie in code gegoten. Dit cluster beschrijft niet hoe het platform gebouwd is — maar welke platformkeuzes de gebruiker ziet en kan vertrouwen.*
+
+> **Opmerking:** dit cluster beschrijft verwachtingen en commitments vanuit gebruikersperspectief, niet implementatiedetails. Technische invulling hoort thuis in `docs/planning/issue16/research.md`.
+
+| Feature | Beschrijving | Flags |
+|---------|-------------|-------|
+| Open core engine | De basis-infrastructuur (data-ingestie, opslag, encryptie, basis-dashboard) is open source en publiek inspecteerbaar. Gebruikers kunnen de code lezen, auditen en zelf hosten. | ⚠️ |
+| Premium AI & coach laag | Geavanceerde AI-inzichten, Truth Engine, planning en B2B-integraties zijn de betaalde abonnementslaag — het eerlijke model dat het platform financiert. | |
+| Zero-engagement codebase | De app bevat geen mechanismen voor engagement farming: geen push-notificaties zonder actieve gebruikersinstructie, geen algoritmische contentranking, geen re-engagement triggers. Architectureel geborgd, niet beleidsmatig beloofd. | ⚠️ |
+| Cryptografische data-deletie | Account verwijderen = cryptografische vernietiging van de encryptiesleutels. Data is onomkeerbaar onleesbaar, ook op backups. Geen "inactief"-vlaggetje in een database. | ⚠️ |
+| Portable identity | Volledig profiel, AI-geschiedenis en alle data exporteerbaar in universeel formaat. De gebruiker is niet gegijzeld door het platform — hij kan vertrekken met alles wat van hem is. | 💭 |
+| Geen model-training op persoonlijke data | Persoonlijke gezondheidsdata wordt nooit gebruikt om algemene AI-modellen te trainen zonder expliciete opt-in per gebruik. De AI leert over jou, van jou — niet over anderen, van jou. | ⚠️ |
+| Transparant businessmodel | Het verdienmodel is op elk moment leesbaar en eenvoudig: abonnement, open core, geen advertenties, geen data-verkoop. Geen verborgen agenda — ook niet in de kleine lettertjes. | |
+
+---
+
+### Cluster 19 — Nieuwe Doelgroepen
+
+*Energiebeheer is niet alleen voor sporters. Voor sommige groepen is het geen hobby — het is een voorwaarde om te kunnen functioneren.*
+
+| Feature | Beschrijving | Flags |
+|---------|-------------|-------|
+| Neurodivergent modus (ADHD/autisme) | Focus op sensorische overprikkeling, dopamine-management (pieken/dalen na hyperfocus) en herstel van executieve disfunctie. Prikkel-correlatie in plaats van sport-correlatie als primaire lens. | 💭 |
+| Chronisch ziek / burnout (pacing & spoon theory) | Energie is eindig en niet-herstelbaar door extra inspanning. Visueel maken van het energiebudget (spoons) per dag, om crashes te voorkomen bij Long Covid, ME/CVS, zware burnout of postoperatief herstel. | 💭 |
+| Survival ouders | Modus voor jonge ouders zonder slaap, zonder routine, zonder energie voor doelen. Geen rode grafieken, geen gemiste doelen, geen suggesties om meer te sporten. Puur schadebeperking: "Je hebt 3 uur geslapen in blokjes. Vandaag telt overleven — wees mild voor jezelf." | 💭 |
+| De creatieve maker | Tracking van flow-state stamina en creatieve cycli voor artiesten, schrijvers, muzikanten, programmeurs. Herkennen wanneer het brein leeg is en pushen contraproductief wordt — preventie van creatieve burn-out als primaire waarde. | 💭 |
+| Kenniswerker zonder sport | De app volledig bruikbaar zonder een enkel gekoppeld sportapparaat: puur journal, habit tracker, slaap, stress, cognitieve performance, aandachtsdieet. Data-gedreven zelfkennis zonder atleet te zijn. | 💭 |
+| Mantelzorger / verzorgende professional | Mensen die professioneel of privé de zorg voor anderen dragen verliezen systematisch hun eigen basisbehoefte uit oog. Een modus die de focus legt op de zorgverlener zelf: herstel, grenzen, slaap, eigen energie. | 💭 |
+| Ouder wordende actieve mens | Niet de sporter die traint voor PR's, maar de 55-plusser die actief wil blijven zonder blessures. Herstel duurt langer, volumes zijn lager, continuïteit telt zwaarder dan piekprestatie. Aangepaste metrics en benchmarks. | 💭 |
+
+---
+
+### Cluster 20 — Anti-Viral Social Sanctuary
+
+*Een sociale laag die door zijn architectuur virality, engagement farming en de race-to-the-bottom van aandachtseconomie onmogelijk maakt.*
+
+| Feature | Beschrijving | Flags |
+|---------|-------------|-------|
+| Zero-discovery architectuur | Er is geen 'For You', geen 'Explore', geen aanbevelingsalgoritme. Je kunt alleen mensen vinden via een directe link, QR-code of expliciete zoekopdracht. Viraliteit is technisch onmogelijk — niet beleidsmatig verboden. | ⚠️ |
+| Context-first publishing | Een artiest, schrijver of atleet deelt niet alleen het eindproduct, maar hecht er automatisch de biologische realiteit achter: hartslag tijdens het optreden, slaapdata tijdens het schrijven, loadstatus voor de race. De post toont de menselijke werkelijkheid achter de creatie. | 💭 |
+| Creator-patron model (sovereign subscriptions) | Creators kunnen diepere dagboeken, data-verrijkte werkprocessen of lange reflecties achter een persoonlijke betaalmuur zetten voor echte fans — Substack/Patreon-principe, maar geïntegreerd en eigendomsbevrijdend. Minimale platform-fee; creators bezitten hun publiek volledig. | 💭 ⚠️ |
+| Het 'Studio' profiel | Een profiel is geen etalage van hoogtepunten maar een logboek van het proces: ruwe werkethiek, moeilijke momenten, data over de weg ernaar toe. Authenticiteit afgedwongen door design — niet als norm van buiten opgelegd. | 💭 |
+| Volgrelaties als kwaliteitsfilter | Geen follower-count als statussignaal. Volgen is een persoonlijke curation-daad, geen competitie. Wie je volgt en hoe ze bijdragen aan jouw welzijn — dat is het meetpunt, niet hoeveel mensen jou volgen. | |
+| Besloten community circles | Kleine, door uitnodiging of curation gevormde groepen rondom gedeeld thema of levensfase. Geen open communities die tot schreeuwwedstrijden verworden — bewust klein gehouden als kwaliteitsbodem. | 💭 |
+| Exporteerbare creator history | Alle posts, reflecties en data-verrijkte content volledig exporteerbaar in open formaat. De creator verliest niets als hij het platform verlaat. | R: Full data export |
+
+---
+
+### Cluster 20 — Anti-Viral Social Sanctuary
+
+*Een sociale laag die door zijn architectuur virality, engagement farming en de race-to-the-bottom van aandachtseconomie onmogelijk maakt.*
+
+| Feature | Beschrijving | Flags |
+|---------|-------------|-------|
+| Zero-discovery architectuur | Er is geen 'For You', geen 'Explore', geen aanbevelingsalgoritme. Je kunt alleen mensen vinden via een directe link, QR-code of expliciete zoekopdracht. Viraliteit is technisch onmogelijk — niet beleidsmatig verboden. | ⚠️ |
+| Context-first publishing | Een artiest, schrijver of atleet deelt niet alleen het eindproduct, maar hecht er automatisch de biologische realiteit achter: hartslag tijdens het optreden, slaapdata tijdens het schrijven, loadstatus voor de race. De post toont de menselijke werkelijkheid achter de creatie. | 💭 |
+| Creator-patron model (sovereign subscriptions) | Creators kunnen diepere dagboeken, data-verrijkte werkprocessen of lange reflecties achter een persoonlijke betaalmuur zetten voor echte fans — Substack/Patreon-principe, maar geïntegreerd en eigendomsbevrijdend. Minimale platform-fee; creators bezitten hun publiek volledig. | 💭 ⚠️ |
+| Het 'Studio' profiel | Een profiel is geen etalage van hoogtepunten maar een logboek van het proces: ruwe werkethiek, moeilijke momenten, data over de weg ernaar toe. Authenticiteit afgedwongen door design — niet als norm van buiten opgelegd. | 💭 |
+| Volgrelaties als kwaliteitsfilter | Geen follower-count als statussignaal. Volgen is een persoonlijke curation-daad, geen competitie. Wie je volgt en hoe ze bijdragen aan jouw welzijn — dat is het meetpunt, niet hoeveel mensen jou volgen. | |
+| Besloten community circles | Kleine, door uitnodiging of curation gevormde groepen rondom gedeeld thema of levensfase. Geen open communities die tot schreeuwwedstrijden verworden — bewust klein gehouden als kwaliteitsbodem. | 💭 |
+| Exporteerbare creator history | Alle posts, reflecties en data-verrijkte content volledig exporteerbaar in open formaat. De creator verliest niets als hij het platform verlaat. | R: Full data export |
 
 ---
 
