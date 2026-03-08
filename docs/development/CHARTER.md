@@ -111,7 +111,7 @@ De mens die zichzelf eerlijk wil begrijpen heeft geen gebrek aan data. Hij heeft
 **Wij zijn het enige platform dat:**
 - Alle bronnen combineert zonder vendor lock-in
 - Analyse levert zonder engagement-model — er is geen incentive om je langer dan nodig te houden
-- Jouw data lokaal-eerst behandelt met cryptografisch verifieerbare eigendomsrechten
+- Jouw data centraal host voor connectiviteit, maar de privacy verifieerbaar maakt via een volledig open-source architectuur en database-ontwerp.
 - Eerlijk is ook als het antwoord ongemakkelijk is — geen positivity filter, geen gamification van gezondheid
 - Gebouwd is op open kerncode die door iedereen gecontroleerd kan worden
 
@@ -124,28 +124,31 @@ De mens die zichzelf eerlijk wil begrijpen heeft geen gebrek aan data. Hij heeft
 
 *De onwrikbare geloofsovertuigingen die elke beslissing toetsen. Elk feature, elke architectuurkeuze, elke business-beslissing wordt hieraan geijkt. Als iets hieraan twijfeld — het gaat niet door.*
 
-**Principe 1 — Eigenaarschap is absoluut.**
-Jouw data is van jou. Jouw inzichten zijn van jou. Jouw conclusies zijn van jou. Het platform is een instrument, geen eigenaar. De gebruiker kan op elk moment vertrekken met alles wat van hem is — inclusief zijn AI-geschiedenis, zijn reflecties en zijn ruwe data — in een open formaat dat hij zelf kan lezen.
+**Principe 1 — Eigenaarschap door Verificatie, niet door Beloftes.**
+De database draait centraal voor continuïteit, maar vertrouwen mag nooit afhangen van onze "blauwe ogen". De architectuur, het database-ontwerp en de data-omgang zijn open source en auditeerbaar door externe partijen. De gebruiker kan op elk moment vertrekken met alles wat van hem is — inclusief zijn AI-geschiedenis, zijn reflecties en zijn ruwe data — in een open formaat dat hij zelf kan lezen.
 
-**Principe 2 — Eerlijkheid boven comfort.**
+**Principe 2 — De Onafhankelijke AI (Transitie).**
+Om onafhankelijk te blijven van Big Tech, weigeren we black-box modellen die trainen op privédata. Onze absolute stip op de horizon is een zelfgehost, open-source LLM, specifiek en uitsluitend getraind voor gezondheidsinzicht op basis van expliciet gedoneerde anonieme data. Tot die tijd faciliteren we BYOAI (Bring Your Own AI) / BYOK (Bring Your Own Key): jij kiest je AI-provider, wij leveren de context, Big Tech krijgt geen vrijbrief.
+
+**Principe 3 — Eerlijkheid boven comfort.**
 De AI toont wat de data zegt, ook als dat ongemakkelijk is. Geen positivity filter. Geen sugarcoating. Geen optimistische herformulering van een slecht herstelpatroon. De gebruiker die de waarheid zoekt verdient een tool die de waarheid vertelt.
 
-**Principe 3 — Inzicht is het doel — niet betrokkenheid.**
+**Principe 4 — Inzicht is het doel — niet betrokkenheid.**
 Succes betekent dat de gebruiker de app minder nodig heeft, niet meer. Elk feature wordt beoordeeld op de vraag: *helpt dit de gebruiker beter te begrijpen, of trekt het hem langer in de app?* Schermtijd is nooit een succesmetric. Widgets bestaan om app-opens te vervangen.
 
-**Principe 4 — Ethische keuzes zitten in de architectuur — niet in de gebruiksvoorwaarden.**
+**Principe 5 — Ethische keuzes zitten in de architectuur — niet in de gebruiksvoorwaarden.**
 Zero-engagement, cryptografische data-deletie, absence van een aanbevelingsalgoritme — dit zijn technische eigenschappen van het systeem, geen beleidsbeloften. De code is open en controleerbaar. Als we het niet in de code kunnen afdwingen, beloven we het niet.
 
-**Principe 5 — De non-atleet is eerste klasse.**
+**Principe 6 — De non-atleet is eerste klasse.**
 Sport is een invalshoek, geen kern. Elk feature werkt ook voor wie niet sport, niet wil sporten, of nooit gespord heeft. Een kenniswerker, een mantelzorger, iemand die herstelt van burnout — zij zijn even legitieme gebruikers als de marathonloper. Elk ontwerp wordt getoetst: *werkt dit ook zonder een enkel sportapparaat?*
 
-**Principe 6 — Transparantie als default.**
+**Principe 7 — Transparantie als default.**
 Het businessmodel is op elk moment leesbaar en eenvoudig. De AI-redenering is inzichtelijk. De open core is auditeerbaar. We verbergen niets achter complexiteit, juridisch jargon of algoritmen die niemand inspecteert. Wie wil begrijpen hoe het werkt, kan dat.
 
-**Principe 7 — Menselijke werkelijkheid boven hoogtepunten.**
+**Principe 8 — Menselijke werkelijkheid boven hoogtepunten.**
 We bouwen voor het echte leven — voor de slechte dag, het gebroken week, de periode dat overleven genoeg is. Een profiel is geen etalage van prestaties; het is een eerlijk logboek van een mens. Data die de werkelijkheid toont, ook als die onflatterend is, heeft meer waarde dan data die verzwegen wordt.
 
-**Principe 8 — Toestemming is altijd expliciet, altijd intrekbaar.**
+**Principe 9 — Toestemming is altijd expliciet, altijd intrekbaar.**
 Elke vorm van datadeling, sociale interactie of externe integratie is opt-in. Nooit stilzwijgend aangenomen, nooit standaard aan. De gebruiker die toestemming geeft begrijpt wat hij geeft — en kan het op elk moment terugnemen zonder verlies van zijn eigen data.
 
 ---
@@ -182,6 +185,8 @@ De gebruiker verlaat het platform met alles wat van hem is. Data-export is een k
 > **"We slagen als de gebruiker de app sluit met meer inzicht dan waarmee hij hem opende."**
 
 Dit is de toetssteen voor elke productkeuze. Niet hoeveel mensen dagelijks actief zijn. Niet hoe lang een sessie duurt. Maar of de gebruiker na interactie met het platform iets begrijpt over zichzelf dat hij daarvoor niet begreep.
+
+Wij meten dat via expliciete, vrijwillige feedback van de gebruiker — nooit via passief gedragsdata. Succes is wat de gebruiker zelf aanwijst als waardevol, niet wat wij afleiden uit zijn klikgedrag.
 
 **Wat dit betekent in de praktijk:**
 - Een week zonder app-open, maar met drie inzichten die gedrag veranderd hebben → succes
@@ -256,3 +261,4 @@ Dat is het model. Niet perfect. Maar eerlijk.
 | 0.2 | 2026-03-08 | The Problem, Value Proposition, Principles, Anti-Principles, North Star, Business Model Commitment toegevoegd — charter compleet |
 | 0.3 | 2026-03-08 | Business Model: Laag 5 convenience fees toegevoegd met expliciete missie-toets en architecturele voorwaarden |
 | 0.4 | 2026-03-08 | North Star hersteld naar inzicht-only; convenience als abonnementswaarde verankerd; affiliate-fees expliciet uitgesloten |
+| 0.5 | 2026-03-08 | Value Prop: lokaal-eerst vervangen door open-source verificatie; Principe 1 & 2 herschreven; AI-onafhankelijkheid/BYOAI toegevoegd als Principe 2; nummering opgeschoven; North Star meetbaarheid toegevoegd |
