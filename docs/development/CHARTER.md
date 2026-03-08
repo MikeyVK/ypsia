@@ -179,21 +179,20 @@ De gebruiker verlaat het platform met alles wat van hem is. Data-export is een k
 
 ## North Star
 
-> **"We slagen als de gebruiker de app sluit met meer inzicht of meer tijd — niet opent om te scrollen."**
+> **"We slagen als de gebruiker de app sluit met meer inzicht dan waarmee hij hem opende."**
 
-Dit is de toetssteen voor elke productkeuze. De waarde die wij leveren is tweeledig: eerlijk begrip van zichzelf, en teruggewonnen tijd voor het echte leven. Beide zijn gelegitimeerde redenen om het platform te gebruiken. Alles wat daarbuiten valt — aandacht oogsten, binding creëren, aanwezigheid meten — is niet onze zaak.
+Dit is de toetssteen voor elke productkeuze. Niet hoeveel mensen dagelijks actief zijn. Niet hoe lang een sessie duurt. Maar of de gebruiker na interactie met het platform iets begrijpt over zichzelf dat hij daarvoor niet begreep.
 
 **Wat dit betekent in de praktijk:**
 - Een week zonder app-open, maar met drie inzichten die gedrag veranderd hebben → succes
-- Boodschappen doen in twee minuten omdat het platform de brug bouwt → succes
-- Dagelijks inloggen zonder dat er iets geleerd of gewonnen wordt → mislukking
+- Dagelijks inloggen zonder dat er iets geleerd wordt → mislukking
 - Een gebruiker die vertrekt omdat hij zichzelf genoeg begrijpt om zonder te kunnen → het beste dat ons kan overkomen
 
 **Wat we niet meten als succes:**
 Daily Active Users, sessieduur, push-open-rate, streak-lengte.
 
 **Wat we wél meten:**
-Groeit het zelfbegrip van de gebruiker over tijd? Wint hij aantoonbaar tijd terug op taken die niets met zelfkennis te maken hebben? Blijft hij omdat het platform hem iets geeft — niet omdat hij vastzit?
+Groeit het zelfbegrip van de gebruiker over tijd? Worden er verbanden zichtbaar die daarvoor onzichtbaar waren? Blijft hij omdat het platform hem iets geeft — niet omdat hij vastzit?
 
 ---
 
@@ -227,8 +226,8 @@ Read-access op expliciete uitnodiging van de gebruiker. Coaches die hun atleten 
 **Laag 4 — Creator economy (platformfee op sovereign subscriptions)**
 Creators die hun publiek een betaalde laag aanbieden via het platform (data-verrijkte werkprocessen, diepere dagboeken, procesverslagen) dragen een kleine platformfee af. Minimaal, transparant, en creators bezitten hun eigen publiek volledig — geen lock-in.
 
-**Affiliate-inkomsten als bijproduct van nuttige features**
-Features die de gebruiker tijd besparen — zoals boodschappenlijsten die direct naar zijn gekozen winkel gaan — kunnen een affiliate-vergoeding opleveren. Dit is een bijproduct, geen drijfveer. De test: *vermindert deze feature de tijd die de gebruiker nodig heeft voor een taak?* Als ja: de feature mag bestaan. De commissiestructuur stuurt nooit wat er getoond of aanbevolen wordt.
+**Convenience als abonnementswaarde — nooit als affiliate**
+Uitvoeringsfeatures die voortvloeien uit inzicht — zoals het exporteren of doorsturen van een boodschappenlijst — horen thuis in een betaald abonnementstier, nooit in een affiliate-constructie met een externe partij. De basisexport is altijd gratis: de gebruiker kan zijn lijst altijd meenemen, uitprinten of importeren waar hij wil. Diepere integraties zijn abonnementsgefinancierd. Zo verdienen wij uitsluitend aan de gebruiker die waarde erkent — nooit aan de grocer die een tweede meester zou worden.
 
 ---
 
@@ -236,6 +235,7 @@ Features die de gebruiker tijd besparen — zoals boodschappenlijsten die direct
 
 - **Geen advertenties** — ook niet contextueel, ook niet "non-gepersonaliseerd". Elke advertentie creëert een tweede meester.
 - **Geen data-verkoop** — aan niemand, onder geen enkele constructie, ook niet geanonimiseerd zonder expliciete opt-in per gebruiker per gebruik.
+- **Geen affiliate-fees van externe dienstverleners** — geen commissies van grocers, supplementmerken of andere partijen op wat de gebruiker koopt of bestelt. Wij verdienen uitsluitend aan de gebruiker zelf, via een eerlijk abonnement.
 - **Geen VC-ronde met exit-verplichting** — bootstrapped of community-gefinancierd. Zodra er een aandeelhouder is die rendement eist op een tijdlijn die conflicteert met de missie, is de missie in gevaar.
 - **Geen zorgverzekeraarsmodel zonder cryptografisch verifieerbare gebruikerscontrole** — het idee van premiekortingen in ruil voor data is verleidelijk maar structureel gevaarlijk. Als we het ooit aanraken, is het uitsluitend op basis van volledig verifieerbare opt-in, per datapunt, intrekbaar per dag.
 
@@ -245,7 +245,7 @@ Features die de gebruiker tijd besparen — zoals boodschappenlijsten die direct
 
 De meeste platforms draaien op engagement omdat hun investeerders rendement meten via actieve gebruikers. Wij meten succes via iets anders — zie North Star. De financiering via abonnement maakt dat congruent: een gebruiker die betaalt voor inzicht, betaalt niet voor schermtijd. Zijn abonnement loopt door zolang het platform hem waarde levert. Die waarde is inzicht — niet aanwezigheid.
 
-**Dat betekent:** elke feature die meer betrokkenheid creëert zonder meer inzicht te leveren is commercieel zinloos voor ons. De business-incentive en de missie-incentive wijzen voor het eerst in dezelfde richting.
+**Dat betekent:** elke feature die meer betrokkenheid creëert zonder meer inzicht of aantoonbare waarde voor de gebruiker te leveren is commercieel zinloos voor ons. De business-incentive en de missie-incentive wijzen voor het eerst in dezelfde richting.
 
 Dat is het model. Niet perfect. Maar eerlijk.
 
@@ -258,3 +258,4 @@ Dat is het model. Niet perfect. Maar eerlijk.
 | 0.1 | 2026-03-08 | Purpose, Gebruiker, Mission, Vision vastgelegd via interview |
 | 0.2 | 2026-03-08 | The Problem, Value Proposition, Principles, Anti-Principles, North Star, Business Model Commitment toegevoegd — charter compleet |
 | 0.3 | 2026-03-08 | Business Model: Laag 5 convenience fees toegevoegd met expliciete missie-toets en architecturele voorwaarden |
+| 0.4 | 2026-03-08 | North Star hersteld naar inzicht-only; convenience als abonnementswaarde verankerd; affiliate-fees expliciet uitgesloten |
