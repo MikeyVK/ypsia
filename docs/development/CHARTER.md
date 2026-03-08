@@ -2,7 +2,7 @@
 
 > **Werknaam project:** Sovereign · BaseLine · Vita *(definitieve naam volgt)*
 > **Status:** DRAFT — werk in uitvoering
-> **Versie:** 1.0 — Principes herschreven naar resultaatstaal; implementatietermen verwijderd
+> **Versie:** 1.1 — Principe 1: "proportioneel" vervangen door absolute onleesbaarheidsbelofte; Principe 2: opslag-verbod toegevoegd
 > **Laatste update:** 2026-03-08
 
 ---
@@ -127,14 +127,14 @@ De mens die zichzelf eerlijk wil begrijpen heeft geen gebrek aan data. Hij heeft
 **Principe 1 — Eigenaarschap door Verificatie, niet door Beloftes.**
 De database draait centraal voor continuïteit, maar vertrouwen mag nooit afhangen van onze "blauwe ogen". De architectuur, het database-ontwerp en de data-omgang zijn open source en auditeerbaar door externe partijen. De gebruiker kan op elk moment vertrekken met alles wat van hem is — inclusief zijn AI-geschiedenis, zijn reflecties en zijn ruwe data — in een open formaat dat hij zelf kan lezen.
 
-De bescherming van jouw data is proportioneel aan haar gevoeligheid. Hoe intiemer de data — locatie, biometrie, dagboek — hoe sterker de cryptografische bescherming en hoe minder wij als platform toegang hebben of nodig hebben. Wat wij wél kunnen lezen, staat in de open-source code. Wat wij niet kunnen lezen, ook.
+Jouw meest intieme data — locatie, biometrie, dagboeken — is voor ons onleesbaar. Wij leveren de kluis, jij bezit als enige de sleutel. Wat wij wél kunnen lezen, staat in de open-source code. Wat wij niet kunnen lezen, ook.
 
 De enige toestemming die de gebruiker apart verleent betreft bijdragen aan geaggregeerde inzichten op populatieniveau: wie wil dat zijn patronen meewegen in platform-brede analyses, kiest dat expliciet en kan het op elk moment zonder gevolg terugtrekken. Bijdragen aan populatie-analyses verlenen ons nooit toegang tot de individuele data waaruit ze zijn afgeleid.
 
 **Principe 2 — De Onafhankelijke AI (Transitie).**
 Om onafhankelijk te blijven van Big Tech, weigeren we black-box modellen die trainen op privédata. Onze absolute stip op de horizon is een zelfgehost, open-source LLM, specifiek en uitsluitend getraind voor gezondheidsinzicht op basis van expliciet gedoneerde anonieme data.
 
-Tot die tijd faciliteren we BYOAI (Bring Your Own AI) / BYOK (Bring Your Own Key): jij kiest welke externe provider jouw data verwerkt voor de analyse, en jij beheert de sleutel waarmee die toegang wordt verleend. Wij verdienen niet aan die keuze en wij beïnvloeden die keuze niet. De verbinding tussen jou en jouw gekozen provider bestaat uitsluitend in jouw belang — nooit voor ons.
+Tot die tijd faciliteren we BYOAI (Bring Your Own AI) / BYOK (Bring Your Own Key): jij kiest welke externe provider jouw data verwerkt voor de analyse, en jij beheert de sleutel waarmee die toegang wordt verleend. Wij verdienen niet aan die keuze en wij beïnvloeden die keuze niet. De verbinding tussen jou en jouw gekozen provider bestaat uitsluitend in jouw belang — nooit voor ons. Wij zijn de brug, niet de meeluisteraar: wij sturen jouw data door voor analyse, maar slaan de inhoud en het antwoord nooit op.
 
 **Principe 3 — Eerlijkheid boven comfort.**
 De AI toont wat de data zegt, ook als dat ongemakkelijk is. Geen positivity filter. Geen sugarcoating. Geen optimistische herformulering van een slecht herstelpatroon. De gebruiker die de waarheid zoekt verdient een tool die de waarheid vertelt. Eerlijkheid ontslaat ons niet van menselijkheid: wanneer data of journal structurele crisissignalen afgeven, verwijst het platform proactief door naar professionele hulp — dit is de enige uitzondering op onze weigering om te oordelen.
@@ -273,3 +273,4 @@ Dat is het model. Niet perfect. Maar eerlijk.
 | 0.8 | 2026-03-08 | Principe 1: "E2EE" vervangen door correcte termen Zero-Knowledge opslag & Zero-Retention verwerking; Principe 2: BYOAI-transparantie — platform als doorgeefluik, verantwoordelijkheid providervertrouwen bij gebruiker |
 | 0.9 | 2026-03-08 | Principe 1: aggregatiepijplijn architectureel verankerd — gescheiden van persoonlijke kluis; Principe 2: BYOAI client-side execution vastgelegd, backend raakt prompt nooit aan (GDPR Art. 9); Laag 1: API-limieten externe partijen transparant gemaakt, self-hosted vereist eigen credentials |
 | 1.0 | 2026-03-08 | Principe 1: implementatietermen verwijderd (Zero-Knowledge, Zero-Retention, aggregatiepijplijn) → proportionaliteitsbeginsel als grondslag; Principe 2: routing-architectuur en juridische claimen verwijderd → keuzevrijheid en afwezigheid van eigen belang als grondslag; Laag 1: "lokale opslag" verwijderd |
+| 1.1 | 2026-03-08 | Principe 1: "proportioneel" vervangen door absolute onleesbaarheidsbelofte + kluis-metafoor (geen glijdende schaal); Principe 2: "nooit voor ons" aangevuld met concreet opslag-verbod — gedragsbelofte in plaats van intentiebelofte |
