@@ -125,13 +125,13 @@ De mens die zichzelf eerlijk wil begrijpen heeft geen gebrek aan data. Hij heeft
 *De onwrikbare geloofsovertuigingen die elke beslissing toetsen. Elk feature, elke architectuurkeuze, elke business-beslissing wordt hieraan geijkt. Als iets hieraan twijfeld — het gaat niet door.*
 
 **Principe 1 — Eigenaarschap door Verificatie, niet door Beloftes.**
-De database draait centraal voor continuïteit, maar vertrouwen mag nooit afhangen van onze "blauwe ogen". De architectuur, het database-ontwerp en de data-omgang zijn open source en auditeerbaar door externe partijen. De gebruiker kan op elk moment vertrekken met alles wat van hem is — inclusief zijn AI-geschiedenis, zijn reflecties en zijn ruwe data — in een open formaat dat hij zelf kan lezen.
+De database draait centraal voor continuïteit, maar vertrouwen mag nooit afhangen van onze "blauwe ogen". De architectuur, het database-ontwerp en de data-omgang zijn open source en auditeerbaar door externe partijen. De gebruiker kan op elk moment vertrekken met alles wat van hem is — inclusief zijn AI-geschiedenis, zijn reflecties en zijn ruwe data — in een open formaat dat hij zelf kan lezen. De standaard is end-to-end encryptie: wij kunnen de data in rust niet inzien. Wie geavanceerde AI-functies wil die kruisanalyse over geanonimiseerde datasets vereisen, kiest daar expliciet voor — met volledige kennis van wat die keuze inhoudt.
 
 **Principe 2 — De Onafhankelijke AI (Transitie).**
 Om onafhankelijk te blijven van Big Tech, weigeren we black-box modellen die trainen op privédata. Onze absolute stip op de horizon is een zelfgehost, open-source LLM, specifiek en uitsluitend getraind voor gezondheidsinzicht op basis van expliciet gedoneerde anonieme data. Tot die tijd faciliteren we BYOAI (Bring Your Own AI) / BYOK (Bring Your Own Key): jij kiest je AI-provider, wij leveren de context, Big Tech krijgt geen vrijbrief.
 
 **Principe 3 — Eerlijkheid boven comfort.**
-De AI toont wat de data zegt, ook als dat ongemakkelijk is. Geen positivity filter. Geen sugarcoating. Geen optimistische herformulering van een slecht herstelpatroon. De gebruiker die de waarheid zoekt verdient een tool die de waarheid vertelt.
+De AI toont wat de data zegt, ook als dat ongemakkelijk is. Geen positivity filter. Geen sugarcoating. Geen optimistische herformulering van een slecht herstelpatroon. De gebruiker die de waarheid zoekt verdient een tool die de waarheid vertelt. Eerlijkheid ontslaat ons niet van menselijkheid: wanneer data of journal structurele crisissignalen afgeven, verwijst het platform proactief door naar professionele hulp — dit is de enige uitzondering op onze weigering om te oordelen.
 
 **Principe 4 — Inzicht is het doel — niet betrokkenheid.**
 Succes betekent dat de gebruiker de app minder nodig heeft, niet meer. Elk feature wordt beoordeeld op de vraag: *helpt dit de gebruiker beter te begrijpen, of trekt het hem langer in de app?* Schermtijd is nooit een succesmetric. Widgets bestaan om app-opens te vervangen.
@@ -173,7 +173,7 @@ De AI is geen coach die je aanmoedigt, geen therapeut die je valideert, geen fee
 We meten, we leggen verbanden, we signaleren afwijkingen van eigen baseline. We stellen geen diagnoses, schrijven geen behandelingen voor, en moraliseren niet over leefstijlkeuzes. "Je slaapt structureel te weinig" is een observatie. "Je moet eerder naar bed" is een oordeel. Het eerste is ons werk. Het tweede niet.
 
 **Nooit: algoritmische virality.**
-Geen aanbevelingsalgoritme. Geen "mensen die je misschien kent". Geen "trending content". Geen For You. Ontdekking is altijd intentioneel — via directe link, expliciete zoekopdracht, of persoonlijke uitnodiging. Viraliteit is architectureel onmogelijk, niet beleidsmatig verboden.
+Geen aanbevelingsalgoritme. Geen "mensen die je misschien kent". Geen "trending content". Geen For You. Ontdekking is altijd intentioneel — via directe link, expliciete zoekopdracht, of persoonlijke uitnodiging. Viraliteit is architectureel onmogelijk, niet beleidsmatig verboden. Creators brengen hun eigen publiek mee via externe kanalen — het platform biedt geen intern mechanisme om hun bereik op te voeren.
 
 **Nooit: vendor lock-in.**
 De gebruiker verlaat het platform met alles wat van hem is. Data-export is een kerneigenschap, geen support-ticket. Het formaat is open en leesbaar zonder onze software. Een gebruiker die vertrekt omdat hij iets beters vindt — dat is een goed resultaat. Een gebruiker die blijft omdat hij gevangen zit — dat is een mislukking.
@@ -211,7 +211,7 @@ Groeit het zelfbegrip van de gebruiker over tijd? Worden er verbanden zichtbaar 
 
 Elk eerlijk platform raakt vroeg of laat dezelfde muur: *groeien kost geld, geld komt van investeerders of van gebruikers, en investeerders willen rendement op schaal.* Die schaal wordt doorgaans bereikt via engagement, via data, of via netwerken — alle drie staan haaks op wat wij zijn.
 
-Onze oplossing is niet de spanning wegpoetsen. Het is de financieringsstructuur zo kiezen dat de spanning er architectureel niet meer in zit.
+Onze oplossing is niet de spanning wegpoetsen. Het is de financieringsstructuur zo kiezen dat de spanning er architectureel niet meer in zit. Die structuurkeuze wordt juridisch verankerd: via steward-ownership of onwrikbare statutaire bepalingen is de missie van het platform wettelijk gescheiden van het kapitaalbelang. Winst is toegestaan — dat garandeert onze onafhankelijkheid. Een overname die het platform in dienst stelt van andere belangen is structureel uitgesloten, niet beleidsmatig beloofd.
 
 ---
 
@@ -262,3 +262,4 @@ Dat is het model. Niet perfect. Maar eerlijk.
 | 0.3 | 2026-03-08 | Business Model: Laag 5 convenience fees toegevoegd met expliciete missie-toets en architecturele voorwaarden |
 | 0.4 | 2026-03-08 | North Star hersteld naar inzicht-only; convenience als abonnementswaarde verankerd; affiliate-fees expliciet uitgesloten |
 | 0.5 | 2026-03-08 | Value Prop: lokaal-eerst vervangen door open-source verificatie; Principe 1 & 2 herschreven; AI-onafhankelijkheid/BYOAI toegevoegd als Principe 2; nummering opgeschoven; North Star meetbaarheid toegevoegd |
+| 0.6 | 2026-03-08 | E2EE toegevoegd aan Principe 1; zorgplicht toegevoegd aan Principe 3; juridische verankering toegevoegd aan Business Model; creator paradox toegevoegd aan Anti-Principle virality |
