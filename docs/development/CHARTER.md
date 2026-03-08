@@ -2,7 +2,7 @@
 
 > **Werknaam project:** Sovereign · BaseLine · Vita *(definitieve naam volgt)*
 > **Status:** DRAFT — werk in uitvoering
-> **Versie:** 1.1 — Principe 1: "proportioneel" vervangen door absolute onleesbaarheidsbelofte; Principe 2: opslag-verbod toegevoegd
+> **Versie:** 1.2 — "per gebruik" → "per onderzoek" in data-verkoop verbod
 > **Laatste update:** 2026-03-08
 
 ---
@@ -242,7 +242,7 @@ Creators die hun publiek een betaalde laag aanbieden via het platform (data-verr
 ### Wat we nooit doen voor geld
 
 - **Geen advertenties** — ook niet contextueel, ook niet "non-gepersonaliseerd". Elke advertentie creëert een tweede meester.
-- **Geen data-verkoop** — aan niemand, onder geen enkele constructie, ook niet geanonimiseerd zonder expliciete opt-in per gebruiker per gebruik.
+- **Geen data-verkoop** — aan niemand, onder geen enkele constructie, ook niet geanonimiseerd zonder expliciete opt-in per gebruiker per onderzoek.
 - **Geen affiliate-fees van externe dienstverleners** — geen commissies van grocers, supplementmerken of andere partijen op wat de gebruiker koopt of bestelt. Wij verdienen uitsluitend aan de gebruiker zelf, via een eerlijk abonnement.
 - **Geen VC-ronde met exit-verplichting** — bootstrapped of community-gefinancierd. Zodra er een aandeelhouder is die rendement eist op een tijdlijn die conflicteert met de missie, is de missie in gevaar.
 - **Geen zorgverzekeraarsmodel zonder cryptografisch verifieerbare gebruikerscontrole** — het idee van premiekortingen in ruil voor data is verleidelijk maar structureel gevaarlijk. Als we het ooit aanraken, is het uitsluitend op basis van volledig verifieerbare opt-in, per datapunt, intrekbaar per dag.
@@ -274,3 +274,4 @@ Dat is het model. Niet perfect. Maar eerlijk.
 | 0.9 | 2026-03-08 | Principe 1: aggregatiepijplijn architectureel verankerd — gescheiden van persoonlijke kluis; Principe 2: BYOAI client-side execution vastgelegd, backend raakt prompt nooit aan (GDPR Art. 9); Laag 1: API-limieten externe partijen transparant gemaakt, self-hosted vereist eigen credentials |
 | 1.0 | 2026-03-08 | Principe 1: implementatietermen verwijderd (Zero-Knowledge, Zero-Retention, aggregatiepijplijn) → proportionaliteitsbeginsel als grondslag; Principe 2: routing-architectuur en juridische claimen verwijderd → keuzevrijheid en afwezigheid van eigen belang als grondslag; Laag 1: "lokale opslag" verwijderd |
 | 1.1 | 2026-03-08 | Principe 1: "proportioneel" vervangen door absolute onleesbaarheidsbelofte + kluis-metafoor (geen glijdende schaal); Principe 2: "nooit voor ons" aangevuld met concreet opslag-verbod — gedragsbelofte in plaats van intentiebelofte |
+| 1.2 | 2026-03-08 | "per gebruik" → "per onderzoek" in data-verkoop verbod — GDPR purpose limitation vereist doelspecificiteit, niet query-granulariteit; voorkomt notification fatigue en botst niet met Anti-Principe notificaties |
