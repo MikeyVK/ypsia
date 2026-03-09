@@ -65,7 +65,7 @@ Er is meer persoonlijke data beschikbaar dan ooit. Wearables meten slaap, hartsl
 
 - **Probleem 1 — Data zonder inzicht.** Garmin toont je activiteiten. Oura toont je slaapscore. Strava toont je segmenten. Geen enkel platform legt het verband tussen al die bronnen en geeft antwoord op de vraag die er werkelijk toe doet: *waarom voel ik me zo?* De data is er, maar de intelligentie om er iets mee te doen, ontbreekt.
 - **Probleem 2 — Platforms die de gebruiker als product behandelen.** De grootste gezondheids- en sociale platforms verdienen aan aandacht, aan gedrag en aan data. Hun businessmodel vereist dat de gebruiker terugkomt, scrolt en klikt. Dit is geen bijwerking — het is het fundamentele ontwerp. Elke notificatie, elke *streak* en elke like-teller is een mechanisme om jouw aandacht te oogsten. Jouw gezondheid is de verpakking; jouw aandacht is het product.
-- **Probleem 3 — Informatiechaos als achtergrondstraling.** De wereld produceert meer informatie dan ooit en minder waarheid. Iedereen heeft een mening, iedereen heeft een platform en wie het hardst schreeuwt of de meeste commotie veroorzaakt, bepaalt wat als waar wordt ervaren. In die ruis is het steeds moeilijker om betrouwbare grond te vinden onder persoonlijke beslissingen over gezondheid, energie en leefstijl. De persoonlijke data van de gebruiker zelf is vaak de betrouwbaarste bron die er is, maar niemand helpt de gebruiker die te lezen.
+- **Probleem 3 — Informatiechaos als achtergrondstraling.** De wereld produceert meer informatie dan ooit en minder waarheid. Iedereen heeft een mening, iedereen heeft een platform en wie het hardst schreeuwt of de meeste commotie veroorzaakt, bepaalt wat als waar wordt ervaren. In die ruis is het steeds moeilijker om betrouwbare grond te vinden onder persoonlijke beslissingen over gezondheid, energie en leefstijl. Persoonlijke data is vaak de betrouwbaarste bron die er is, maar niemand helpt die echt te lezen.
 - **Probleem 4 — Digitale afhankelijkheid als onzichtbare belasting.** De telefoon in de slaapkamer, het reflexmatig scrollen, de doomloop van nieuws en sociale media — dit zijn geen persoonlijke zwakheden. Het zijn de uitkomsten van systemen die precies zo zijn ontworpen. De biologische kosten — slechtere slaap, hogere stressniveaus en lagere concentratie — zijn meetbaar, maar worden zelden gemeten. En dus zelden begrepen.
 
 **De kern van het probleem:** De mens die zichzelf eerlijk wil begrijpen, heeft geen gebrek aan data, maar aan tools die in het belang van de gebruiker werken — en aan een overvloed aan tools die aandacht exploiteren.
@@ -105,7 +105,7 @@ Er is meer persoonlijke data beschikbaar dan ooit. Wearables meten slaap, hartsl
 *De onwrikbare geloofsovertuigingen die elke beslissing toetsen. Elke feature, elke architectuurkeuze en elke business-beslissing wordt hieraan geijkt. Als een idee hieraan twijfelt, gaat het niet door.*
 
 **Principe 1 — Eigenaarschap door verificatie, niet door beloftes.**
-De database draait centraal voor continuïteit, maar vertrouwen mag nooit afhangen van onze "blauwe ogen". De architectuur, het database-ontwerp en de data-omgang zijn open source en auditeerbaar door externe partijen. De gebruiker kan op elk moment vertrekken met alles wat van de gebruiker is — inclusief AI-geschiedenis, reflecties en ruwe data — in een open formaat dat zonder onze software leesbaar is.
+De database draait centraal voor continuïteit, maar vertrouwen mag nooit afhangen van onze "blauwe ogen". De architectuur, het database-ontwerp en de data-omgang zijn open source en auditeerbaar door externe partijen. De gebruiker kan op elk moment vertrekken met álle eigen data — inclusief AI-geschiedenis, reflecties en ruwe data — in een open formaat dat zonder onze software leesbaar is.
 
 Jouw meest intieme data — locatie, biometrie en dagboeken — is voor ons onleesbaar. Wij leveren de kluis, jij bezit als enige de sleutel. Wat wij wél kunnen lezen, staat in de open-source code. Wat wij niet kunnen lezen, ook.
 
@@ -135,7 +135,7 @@ Het businessmodel is op elk moment leesbaar en eenvoudig. De AI-redenering is in
 We bouwen voor het echte leven — voor de slechte dag, de gebroken week en de periode dat overleven genoeg is. Een profiel is geen etalage van prestaties; het is een eerlijk logboek van een mens. Data die de werkelijkheid toont, ook als die onflatterend is, heeft fundamenteel meer waarde dan data die wordt verzwegen.
 
 **Principe 9 — Toestemming is altijd expliciet, altijd intrekbaar.**
-Elke vorm van datadeling, sociale interactie of externe integratie is *opt-in*. Nooit stilzwijgend aangenomen, nooit standaard aan. Wie toestemming geeft, begrijpt precies waarvoor toestemming wordt gegeven — en kan die op elk moment terugnemen, zonder enig verlies van eigen data.
+Elke vorm van datadeling, sociale interactie of externe integratie is *opt-in*. Nooit stilzwijgend aangenomen, nooit standaard aan. Wie toestemming geeft, begrijpt precies waarvoor en kan die op elk moment intrekken, zonder enig verlies van eigen data.
 
 ---
 
@@ -162,7 +162,7 @@ We meten, we leggen verbanden en we signaleren afwijkingen van de eigen basislij
 Geen aanbevelingsalgoritme. Geen "mensen die je misschien kent". Geen "trending content". Geen "Voor Jou"-pagina. Ontdekking is altijd intentioneel: via een directe link, een expliciete zoekopdracht, of een persoonlijke uitnodiging. Viraliteit is architecturaal onmogelijk gemaakt, niet alleen beleidsmatig verboden. Creators brengen hun eigen publiek mee via externe kanalen; het platform biedt geen enkel intern mechanisme om hun bereik op te voeren.
 
 **Nooit: leveranciersafhankelijkheid (vendor lock-in).**
-De gebruiker verlaat het platform altijd met alles wat van de gebruiker is. Data-export is een kerneigenschap, geen verstopt support-ticket. Het export-formaat is open en leesbaar zonder onze software. Een gebruiker die vertrekt omdat diegene iets beters heeft gevonden — dat is een acceptabel resultaat. Een gebruiker die blijft omdat het platform vertrek moeilijk maakt — dat is een fundamentele mislukking.
+De gebruiker verlaat het platform altijd met alle eigen data. Data-export is een kerneigenschap, geen verstopt support-ticket. Het export-formaat is open en leesbaar zonder onze software. Een gebruiker die vertrekt na het vinden van iets beters — dat is een acceptabel resultaat. Een gebruiker die blijft omdat het platform vertrek moeilijk maakt — een fundamentele mislukking.
 
 ---
 
@@ -178,7 +178,7 @@ Wij meten dat via expliciete, vrijwillige feedback van de gebruiker, nooit via p
 
 - Een week zonder de app te openen, maar met drie eerdere inzichten die iemands gedrag blijvend hebben veranderd → **een gigantisch succes.**
 - Dagelijks inloggen zonder dat er daadwerkelijk iets geleerd wordt → **een mislukking.**
-- Een gebruiker die vertrekt omdat diegene zichzelf inmiddels goed genoeg begrijpt om zonder Ypsia te kunnen → **het beste dat ons kan overkomen.**
+- Een gebruiker die vertrekt met voldoende zelfinzicht om zonder Ypsia te kunnen → **het beste dat ons kan overkomen.**
 
 **Wat we NIET meten als succes:**
 
