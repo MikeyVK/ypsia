@@ -245,7 +245,7 @@ The PHP `ypsia_render_charter_markdown()` implements section-aware rendering —
 
 ### 8. Routing
 
-**Decision:** `react-router-dom` v7. Two routes: `/` and `/charter`. Nginx requires `try_files $uri /index.html` for SPA fallback.
+**Decision:** `react-router-dom` v7. Three routes: `/`, `/charter`, and `/transparency`. Nginx requires `try_files $uri /index.html` for SPA fallback.
 
 ---
 
