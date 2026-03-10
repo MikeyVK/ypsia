@@ -42,6 +42,193 @@
     ],
     "skip_reason": null,
     "parent_branch": "main",
-    "created_at": "2026-03-10T17:21:34.622382+00:00"
+    "created_at": "2026-03-10T17:21:34.622382+00:00",
+    "planning_deliverables": {
+      "tdd_cycles": {
+        "total": 4,
+        "cycles": [
+          {
+            "cycle_number": 1,
+            "deliverables": [
+              {
+                "id": "D1.1",
+                "description": "react-router-dom v7 ge\u00efnstalleerd en geconfigureerd",
+                "validates": {
+                  "type": "file_glob",
+                  "file": "frontend/package.json"
+                }
+              },
+              {
+                "id": "D1.2",
+                "description": "Drie routes gedefinieerd: /, /charter, /transparency",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "frontend/src/main.jsx",
+                  "text": "createBrowserRouter"
+                }
+              },
+              {
+                "id": "D1.3",
+                "description": "Stub-pagina's HomePage, CharterPage, TransparencyPage aanwezig",
+                "validates": {
+                  "type": "file_glob",
+                  "file": "frontend/src/pages/*.jsx"
+                }
+              },
+              {
+                "id": "D1.4",
+                "description": "Tailwind via npm geconfigureerd (geen CDN)",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "frontend/package.json",
+                  "text": "tailwindcss"
+                }
+              },
+              {
+                "id": "D1.5",
+                "description": "@fontsource/inter ge\u00efnstalleerd (geen Google Fonts)",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "frontend/package.json",
+                  "text": "@fontsource/inter"
+                }
+              }
+            ],
+            "exit_criteria": "Alle drie routes renderen zonder error, Tailwind en Inter font actief via npm, geen externe CDN-aanroepen in source"
+          },
+          {
+            "cycle_number": 2,
+            "deliverables": [
+              {
+                "id": "D2.1",
+                "description": "Vite plugin vite-plugin-charter laadt CHARTER.md at build time",
+                "validates": {
+                  "type": "file_exists",
+                  "file": "frontend/vite-plugin-charter.js"
+                }
+              },
+              {
+                "id": "D2.2",
+                "description": "CharterPage rendert charter-inhoud uit build-time import",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "frontend/src/pages/CharterPage.jsx",
+                  "text": "charter"
+                }
+              },
+              {
+                "id": "D2.3",
+                "description": "Geen runtime fetch naar CHARTER.md \u2014 inhoud is statisch gebundeld",
+                "validates": {
+                  "type": "absent_text",
+                  "file": "frontend/src/pages/CharterPage.jsx",
+                  "text": "fetch("
+                }
+              }
+            ],
+            "exit_criteria": "CharterPage toont de volledige charter-tekst uit docs/development/CHARTER.md, gebundeld at build time, geen externe HTTP-aanroep"
+          },
+          {
+            "cycle_number": 3,
+            "deliverables": [
+              {
+                "id": "D3.1",
+                "description": "Waitlist-formulier op HomePage: alleen e-mailadres, geen interest-veld",
+                "validates": {
+                  "type": "absent_text",
+                  "file": "frontend/src/pages/HomePage.jsx",
+                  "text": "interest"
+                }
+              },
+              {
+                "id": "D3.2",
+                "description": "FastAPI route POST /api/waitlist aanwezig",
+                "validates": {
+                  "type": "file_glob",
+                  "file": "backend/app/routers/waitlist.py"
+                }
+              },
+              {
+                "id": "D3.3",
+                "description": "Identieke response voor subscribe \u00e9n al-bestaand adres (geen enumeration)",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "backend/app/routers/waitlist.py",
+                  "text": "accepted"
+                }
+              },
+              {
+                "id": "D3.4",
+                "description": "Libsodium sealed box encryptie voor opgeslagen e-mailadressen",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "backend/app/routers/waitlist.py",
+                  "text": "SealedBox"
+                }
+              },
+              {
+                "id": "D3.5",
+                "description": "HMAC-token gegenereerd voor confirmatie-link",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "backend/app/routers/waitlist.py",
+                  "text": "hmac"
+                }
+              },
+              {
+                "id": "D3.6",
+                "description": "UI linkt naar GitHub source van waitlist-logica (Principle 7)",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "frontend/src/pages/HomePage.jsx",
+                  "text": "github.com"
+                }
+              }
+            ],
+            "exit_criteria": "Aanmelding opslaat encrypted, bevestigingsmail met HMAC-token wordt verstuurd, geen interest-veld, identieke response voor alle subscribe-pogingen"
+          },
+          {
+            "cycle_number": 4,
+            "deliverables": [
+              {
+                "id": "D4.1",
+                "description": "Umami script self-hosted ge\u00efntegreerd (geen third-party analytics)",
+                "validates": {
+                  "type": "absent_text",
+                  "file": "frontend/index.html",
+                  "text": "google-analytics"
+                }
+              },
+              {
+                "id": "D4.2",
+                "description": "TransparencyPage aanwezig met twee-laags disclosure model",
+                "validates": {
+                  "type": "file_exists",
+                  "file": "frontend/src/pages/TransparencyPage.jsx"
+                }
+              },
+              {
+                "id": "D4.3",
+                "description": "Footer compact disclosure met link naar /transparency",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "frontend/src/components/Footer.jsx",
+                  "text": "/transparency"
+                }
+              },
+              {
+                "id": "D4.4",
+                "description": "TransparencyPage somt alle data-verzameling op (wat, waarom, hoe lang, wie)",
+                "validates": {
+                  "type": "file_exists",
+                  "file": "frontend/src/pages/TransparencyPage.jsx"
+                }
+              }
+            ],
+            "exit_criteria": "Umami actief via self-hosted URL, /transparency pagina volledig met disclosure-model, footer link aanwezig, geen Google Analytics of andere third-party tracking"
+          }
+        ]
+      }
+    }
   }
 }
