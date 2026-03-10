@@ -1,0 +1,47 @@
+{
+  "1": {
+    "issue_title": "Data Fundament",
+    "workflow_name": "epic",
+    "execution_mode": "interactive",
+    "required_phases": [
+      "research",
+      "planning",
+      "design",
+      "coordination",
+      "documentation"
+    ],
+    "skip_reason": null,
+    "parent_branch": null,
+    "created_at": "2026-03-06T19:43:55.910736+00:00"
+  },
+  "16": {
+    "issue_title": "Foundational architecture research: scaffolding, auth, multi-tenancy",
+    "workflow_name": "epic",
+    "execution_mode": "interactive",
+    "required_phases": [
+      "research",
+      "epic_planning",
+      "design",
+      "coordination",
+      "documentation"
+    ],
+    "skip_reason": null,
+    "parent_branch": null,
+    "created_at": "2026-03-07T10:14:27.225699+00:00"
+  },
+  "18": {
+    "issue_title": "Marketing site: React+Vite refactor van PHP prototype",
+    "workflow_name": "refactor",
+    "execution_mode": "interactive",
+    "required_phases": [
+      "research",
+      "planning",
+      "tdd",
+      "validation",
+      "documentation"
+    ],
+    "skip_reason": null,
+    "parent_branch": "main",
+    "created_at": "2026-03-10T17:21:34.622382+00:00"
+  }
+}

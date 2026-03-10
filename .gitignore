@@ -18,7 +18,6 @@ frontend/dist/
 .logs/
 .st3/state.json
 .st3/template_registry.json
-.st3/projects.json
 .st3/temp/
 
 backend/.tools/
