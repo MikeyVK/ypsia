@@ -183,9 +183,45 @@
                   "file": "frontend/src/pages/HomePage.jsx",
                   "text": "github.com"
                 }
+              },
+              {
+                "id": "D3.7",
+                "description": "GET /api/waitlist/confirm/{token} \u2014 bevestigt aanmelding via HMAC-token; identieke 202-response voor geldig \u00e9n onbekend token (geen enumeration)",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "backend/app/routers/waitlist.py",
+                  "text": "/confirm/"
+                }
+              },
+              {
+                "id": "D3.8",
+                "description": "GET /api/waitlist/unsubscribe/{token} \u2014 verwijdert sealed_email via HMAC-token; identieke 202-response voor geldig \u00e9n onbekend token",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "backend/app/routers/waitlist.py",
+                  "text": "unsubscribe"
+                }
+              },
+              {
+                "id": "D3.9",
+                "description": "POST /api/waitlist/resend \u2014 'ik heb de mail niet ontvangen' flow; identieke 202-response ongeacht of het adres bekend is",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "backend/app/routers/waitlist.py",
+                  "text": "/resend"
+                }
+              },
+              {
+                "id": "D3.10",
+                "description": "Launch-send script is idempotent: slaat sent-status op per adres; purge van sealed_email direct na succesvolle verzending",
+                "validates": {
+                  "type": "contains_text",
+                  "file": "backend/app/routers/waitlist.py",
+                  "text": "purge"
+                }
               }
             ],
-            "exit_criteria": "Aanmelding opslaat encrypted, bevestigingsmail met HMAC-token wordt verstuurd, geen interest-veld, identieke response voor alle subscribe-pogingen"
+            "exit_criteria": "Confirm-flow, token-unsubscribe, resend en launch-send idempotency allemaal afgedekt; purge na launch aantoonbaar in code; alle endpoints geven identieke response ongeacht bekendheid adres"
           },
           {
             "cycle_number": 4,
@@ -201,31 +237,33 @@
               },
               {
                 "id": "D4.2",
-                "description": "TransparencyPage aanwezig met twee-laags disclosure model",
+                "description": "TransparencyPage vermeldt expliciet Umami als enige analytics-tool, inclusief self-hosted verklaring",
                 "validates": {
-                  "type": "file_exists",
-                  "file": "frontend/src/pages/TransparencyPage.jsx"
+                  "type": "contains_text",
+                  "file": "frontend/src/pages/TransparencyPage.jsx",
+                  "text": "Umami"
                 }
               },
               {
                 "id": "D4.3",
-                "description": "Footer compact disclosure met link naar /transparency",
+                "description": "Footer bevat klikbare href naar /transparency (niet alleen tekst)",
                 "validates": {
                   "type": "contains_text",
                   "file": "frontend/src/components/Footer.jsx",
-                  "text": "/transparency"
+                  "text": "href=\"/transparency\""
                 }
               },
               {
                 "id": "D4.4",
-                "description": "TransparencyPage somt alle data-verzameling op (wat, waarom, hoe lang, wie)",
+                "description": "TransparencyPage behandelt de waitlist-context expliciet: wat er verzameld wordt, hoe lang, en wanneer sealed_email gepurged wordt",
                 "validates": {
-                  "type": "file_exists",
-                  "file": "frontend/src/pages/TransparencyPage.jsx"
+                  "type": "contains_text",
+                  "file": "frontend/src/pages/TransparencyPage.jsx",
+                  "text": "waitlist"
                 }
               }
             ],
-            "exit_criteria": "Umami actief via self-hosted URL, /transparency pagina volledig met disclosure-model, footer link aanwezig, geen Google Analytics of andere third-party tracking"
+            "exit_criteria": "Umami expliciet benoemd op /transparency incl. self-hosted verklaring; waitlist-disclosure aanwezig; footer href=/transparency aantoonbaar in JSX; geen third-party tracking in index.html"
           }
         ]
       }
