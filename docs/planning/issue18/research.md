@@ -3,7 +3,7 @@
 # Research: Marketing Site — React+Vite Refactor of PHP Prototype
 
 **Status:** APPROVED
-**Version:** 1.4
+**Version:** 1.5
 **Last Updated:** 2026-03-10
 **Issue:** [#18](https://github.com/MikeyVK/ypsia/issues/18)
 **Parent:** [#17](https://github.com/MikeyVK/ypsia/issues/17)
@@ -40,6 +40,7 @@ PHP is also the wrong stack. The existing `frontend/` scaffold (React 18.3.1 + V
 |-------|-------------|
 | `/` | Landing page |
 | `/charter` | Charter manifest renderer |
+| `/transparency` | Telemetry transparency page |
 
 **Landing page sections (in order):**
 1. Hero — headline, two-paragraph body copy, feature panel (three items with icons)
@@ -63,13 +64,20 @@ PHP is also the wrong stack. The existing `frontend/` scaffold (React 18.3.1 + V
 - `<article>` with full charter prose
 - Back-to-top button (fixed, bottom-right)
 
-No dashboard, no login, no user state.
+**Footer / trust strip (all pages):**
+
+A compact, clickable telemetry disclosure line lives in or just above the footer alongside other trust/transparency links. It must not appear in the hero or primary form copy — placement in the footer keeps it proportionate.
+
+Required UI copy (Dutch):
+> *"We meten alleen anonieme, first-party betrouwbaarheidssignalen. Geen cookies, geen profiling."*
+
+This line links to `/transparency`. The disclosure must be present on both the landing page and the charter page.
+
+No dashboard, no login, no user state. Three routes total.
 
 ---
 
 ### 2. Charter Compliance Analysis — CDN Dependencies
-
-Two Principle 5 violations in `web/templates/partials/document-start.php`:
 
 | Violation | Principles | Fix |
 |-----------|------------|-----|
@@ -116,7 +124,7 @@ A classical mailing list — newsletter, drip campaign, re-engagement — is fun
 
 A waitlist with the following precise definition is charter-compatible:
 
-> *"You will receive one email on the day this platform becomes available. Nothing before it. Nothing after it."*
+> *"After verification you will receive one email on the day this platform becomes available. Nothing before it. Nothing after it."*
 
 This is not data collection for Ypsia's benefit. It is fulfilling a promise to someone who explicitly asked for it.
 
@@ -271,6 +279,24 @@ Analytics are permitted **only** to support platform reliability and product qua
 
 **Implementation:** Umami is configured with no cross-site tracking, no session replay, no heatmaps. The script is served from `umami.ypsia.nl` (operator-owned domain). No cookies are set. No consent banner is required as a consequence of this design — but the absence of a consent banner is a result of the charter-compliant scope, not the justification for it.
 
+**Transparency page (`/transparency`) — two-layer disclosure model:**
+
+The landing page carries a compact, footer-level disclosure (see §1). That line links to `/transparency` — a dedicated page that explains the telemetry in full. This implements Charter Principle 7 without cluttering the primary UX.
+
+Page structure for `/transparency`:
+
+1. **Plain-language lead** — what Ypsia measures and why, in one short paragraph. Human tone, no legal language.
+2. **What we measure** — the permitted list (uptime, error rate, performance, aggregated route hits). Short sentences.
+3. **What we explicitly do not measure** — the forbidden list (DAU, session duration, retention, engagement funnels, personal profiling, identity linkage, waitlist cross-reference). Explicit is stronger than vague.
+4. **Why this is charter-compliant** — one paragraph referencing Principle 4, Principle 5, and the Anti-Principle on engagement. Not defensive — matter-of-fact.
+5. **How it is technically bounded** — brief: self-hosted Umami, no cookies, no cross-site tracking, no session replay, script served from own domain.
+6. **Verify it yourself** — human explanation first, then: *"Wil je het verifiëren? Bekijk de Umami configuratie in onze open repository: [GitHub →](https://github.com/MikeyVK/ypsia)"*. Code and git links are supporting evidence — not the lead.
+
+Design constraints:
+- The page is not a legal disclaimer and must not read like one
+- No cookie banners, no "accept" buttons — there is nothing to accept
+- Consistent with the visual design of `/charter` (same prose layout, same typography)
+
 ---
 
 ### 11. Frontend Scaffold State
@@ -300,6 +326,8 @@ Packages to add:
 | 10 | UI links to GitHub source for waitlist logic | Principle 7 — code tells the honest story; architecture is the proof |
 | 11 | Waitlist → FastAPI `/api/waitlist` | First real backend integration; correct separation of concerns |
 | 12 | Self-hosted Umami for first-party reliability telemetry | Principle 4 + 5 — see §10 Analytics Scope |
+| 13 | Compact footer disclosure linking to `/transparency` | Principle 7 — transparency without cluttering primary UX |
+| 14 | `/transparency` page with two-layer disclosure model | Principle 7 — plain-language first, technical verification as supporting evidence |
 
 ---
 
@@ -375,3 +403,4 @@ The validation phase requires all Layer 2 prerequisites to be present. The follo
 | 1.2 | 2026-03-10 | Agent | Waitlist violations identified; cryptographic design; charter compatibility analysis; GitHub transparency link |
 | 1.3 | 2026-03-10 | Agent | Local development prerequisites; validation gate definition; environment setup delegated to separate agent |
 | 1.4 | 2026-03-10 | Agent | Analytics scope charter-grounded (Principle 4+5+Anti-engagement); UX copy for waitlist opt-in; double opt-in sharpened; one-email enforcement mechanism; plaintext/enumeration hard acceptance criteria; version header corrected |
+| 1.5 | 2026-03-10 | Agent | Third route `/transparency`; footer disclosure UX requirement; two-layer telemetry disclosure model; transparency page structure specified; decisions 13+14 added |
