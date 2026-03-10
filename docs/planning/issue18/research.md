@@ -3,7 +3,7 @@
 # Research: Marketing Site — React+Vite Refactor of PHP Prototype
 
 **Status:** APPROVED
-**Version:** 1.2
+**Version:** 1.4
 **Last Updated:** 2026-03-10
 **Issue:** [#18](https://github.com/MikeyVK/ypsia/issues/18)
 **Parent:** [#17](https://github.com/MikeyVK/ypsia/issues/17)
@@ -46,6 +46,17 @@ PHP is also the wrong stack. The existing `frontend/` scaffold (React 18.3.1 + V
 2. Charter CTA block — card linking to `/charter`
 3. Waitlist section — subscribe form + unsubscribe form, with neutral feedback states
 
+   **UX copy requirements for the waitlist form section:**
+   - The form must visibly state before submission that a confirmation email will be sent to verify the address.
+   - The copy must make clear that signup is only completed after clicking the verification link.
+   - The copy must reflect the one-email promise and rule out newsletters and drip campaigns.
+
+   Required UI copy (Dutch, landing page):
+   > *"Na aanmelding ontvang je eerst een bevestigingsmail ter verificatie van je e-mailadres. Pas na die bevestiging sta je op de wachtlijst. Je ontvangt daarna alleen één e-mail op de dag dat Ypsia live gaat."*
+
+   Below the form, the transparency link:
+   > *"Wil je controleren hoe we dit technisch afdwingen? [Bekijk de code →](https://github.com/MikeyVK/ypsia)"*
+
 **Charter page:**
 - Sticky `manifest` header with TOC toggle button
 - TOC flyout panel (left-anchored, backdrop, keyboard dismiss via Escape)
@@ -83,7 +94,7 @@ The `interest` field asks *"Welke data wil je combineren? (bijv. slaap, Garmin)"
 
 Anyone can submit any email address. The only protection is a honeypot field. Ypsia then sends a mail to someone who never requested it. A form submission is not consent. A confirmation click in the recipient's own inbox is.
 
-**Fix:** Double opt-in required. Status state machine: `pending → confirmed → unsubscribed`. Mail is only sent to `confirmed` addresses.
+**Fix:** Double opt-in required. The confirmation email is the **only** email allowed before confirmation. All other waitlist communication is restricted to confirmed addresses only. Status state machine: `pending → confirmed → unsubscribed`. The launch email is the only permitted send to `confirmed` addresses — after which they are purged.
 
 **Violation C — Plain CSV storage (Principle 5 + Principle 1)**
 
@@ -115,7 +126,7 @@ This is not data collection for Ypsia's benefit. It is fulfilling a promise to s
 |----------------|------------|
 | Principle 9 — explicit opt-in | ✅ Double opt-in via confirmation email |
 | Principle 9 — always revocable | ✅ Token link in confirmation mail + "lost my mail" unsubscribe flow |
-| Anti-Principle engagement | ✅ No newsletter, no drip, no re-engagement — one email, then purge |
+| Anti-Principle engagement | ✅ No newsletter, no drip, no re-engagement — one confirmation email pre-launch, one launch email, then purge. The confirmation email is the only permitted pre-confirmation contact. |
 | Principle 1 — we cannot read stored data | ✅ Sealed box; private key never on server |
 | Principle 5 — in architecture, not policy | ✅ Server structurally cannot decrypt without operator key |
 | Principle 7 — transparency | ✅ UI links directly to the GitHub source; code tells the honest story |
@@ -167,12 +178,14 @@ Plaintext email address exists only in server memory during the request. Never w
 3. Regardless of result: response = `"If this address was on the list, it has been removed."`
 4. No enumeration possible; server decrypts nothing
 
-**At launch — one-time decryption:**
+**At launch — one-time decryption (idempotent, purge-after):**
 1. Operator brings private key online via secure channel (for that session only)
-2. FastAPI decrypts all `sealed_email` records with status `confirmed` — in memory
-3. Batch send launch email
-4. Private key discarded — never persisted
-5. All `sealed_email` ciphertexts purged — data has served its only purpose
+2. FastAPI decrypts all `sealed_email` records with status `confirmed` — in memory only
+3. Idempotent batch send: each record is marked `launched` before sending; a re-run skips already-marked records — prevents double delivery if the process is interrupted and restarted
+4. Private key discarded — never persisted on server or in logs
+5. All `sealed_email` ciphertexts purged immediately after successful send — data has served its sole purpose
+
+**Enforcement:** The launch send is structurally one-time. After purge, no email address can ever be recovered or re-sent to from this system. The promise *"one email on the day we go live"* is architecturally enforced — not a policy commitment. This satisfies Charter Principle 5: if we cannot enforce it in code, we do not promise it.
 
 **Result:**
 - A Ypsia employee with full database access sees only ciphertexts and hashes — no email addresses
@@ -228,7 +241,39 @@ The PHP `ypsia_render_charter_markdown()` implements section-aware rendering —
 
 ---
 
-### 9. Frontend Scaffold State
+### 10. Analytics Scope
+
+Analytics are permitted **only** to support platform reliability and product quality — not to measure engagement, retention, or user behaviour patterns. This boundary is grounded in:
+
+- **Principle 4**: success means the user understands themselves better, not that they return more often. DAU, session duration, retention, and engagement funnels are explicitly not success metrics.
+- **Principle 5**: the boundary must be enforced architecturally. Umami is self-hosted on Ypsia's own infrastructure — no data leaves to a third party.
+- **Anti-Principle engagement**: we never optimise on screentime, DAU, session duration, streak completions, or notification open rates.
+
+**Permitted analytics:**
+
+| Metric | Purpose |
+|--------|---------|
+| Uptime / availability | Infrastructure reliability |
+| Error rate (4xx/5xx) | Platform quality |
+| Page load performance (Core Web Vitals) | User experience quality |
+| Aggregated route hits (e.g. how many times `/charter` was loaded) | Product quality signal — no identity attached |
+
+**Explicitly forbidden analytics:**
+
+| Metric | Reason |
+|--------|---------|
+| Daily Active Users (DAU) | Principle 4 anti-metric — Charter §Principles |
+| Session duration | Principle 4 anti-metric |
+| Retention / return visits | Engagement model — Anti-Principle |
+| Engagement funnels | Engagement model — Anti-Principle |
+| Personal profiling or user journeys | Principle 1 + 9 |
+| Linkage to waitlist status or identity | Principle 1 + 9 — no cross-referencing of any kind |
+
+**Implementation:** Umami is configured with no cross-site tracking, no session replay, no heatmaps. The script is served from `umami.ypsia.nl` (operator-owned domain). No cookies are set. No consent banner is required as a consequence of this design — but the absence of a consent banner is a result of the charter-compliant scope, not the justification for it.
+
+---
+
+### 11. Frontend Scaffold State
 
 `frontend/src/App.jsx` is the default Vite counter demo. Complete clean slate — all `frontend/src/` content will be replaced.
 
@@ -254,7 +299,7 @@ Packages to add:
 | 9 | Purge sealed emails after launch send | Data has served its only purpose; no retention beyond need |
 | 10 | UI links to GitHub source for waitlist logic | Principle 7 — code tells the honest story; architecture is the proof |
 | 11 | Waitlist → FastAPI `/api/waitlist` | First real backend integration; correct separation of concerns |
-| 12 | Umami analytics via own domain | Cookieless; no consent banner; Principle 1 + 5 |
+| 12 | Self-hosted Umami for first-party reliability telemetry | Principle 4 + 5 — see §10 Analytics Scope |
 
 ---
 
@@ -299,6 +344,14 @@ The validation phase requires all Layer 2 prerequisites to be present. The follo
 5. Duplicate submission → identical response to new submission (no enumeration)
 6. Launch decryption script → all `confirmed` sealed emails decryptable with dev private key
 
+**Hard acceptance criteria (non-negotiable, failing any one blocks the phase):**
+
+- Plaintext email addresses are **never written to the database, never written to any log file, and never persisted outside the sealed storage field.** They exist only in server memory during the request lifetime.
+- The confirm flow and the "lost my email" unsubscribe flow **never reveal list membership** — response must be identical whether the address is found or not. No timing difference, no different HTTP status code.
+- The subscribe flow returns an **identical response** for new and duplicate addresses — no enumeration possible.
+- The launch send script is **idempotent**: running it twice must not deliver two emails to the same address. Records marked `launched` are skipped on re-run.
+- After the launch send, all `sealed_email` ciphertexts are **purged**. No email address — encrypted or otherwise — remains in the database.
+
 > **Note for environment setup:** A separate agent will prepare the local development environment (Node.js, Python, Mailpit, keypair generation) so this agent's context remains focused on the refactor implementation.
 
 ---
@@ -321,3 +374,4 @@ The validation phase requires all Layer 2 prerequisites to be present. The follo
 | 1.1 | 2026-03-10 | Agent | Full research findings; translated to English |
 | 1.2 | 2026-03-10 | Agent | Waitlist violations identified; cryptographic design; charter compatibility analysis; GitHub transparency link |
 | 1.3 | 2026-03-10 | Agent | Local development prerequisites; validation gate definition; environment setup delegated to separate agent |
+| 1.4 | 2026-03-10 | Agent | Analytics scope charter-grounded (Principle 4+5+Anti-engagement); UX copy for waitlist opt-in; double opt-in sharpened; one-email enforcement mechanism; plaintext/enumeration hard acceptance criteria; version header corrected |

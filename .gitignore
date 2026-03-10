@@ -21,6 +21,10 @@ frontend/dist/
 .st3/projects.json
 .st3/temp/
 
+backend/.tools/
+.env.local
+*.env.local
+backend/data/
 # VS Code (keep mcp.json and settings.json)
 .vscode/*
 !.vscode/mcp.json
