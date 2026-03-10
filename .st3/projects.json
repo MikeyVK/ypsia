@@ -212,27 +212,44 @@
                 }
               },
               {
+                "description": "Dedicated launch-send script aanwezig als apart bestand (niet in waitlist router)",
                 "id": "D3.10",
-                "description": "Launch-send script is idempotent: slaat sent-status op per adres; purge van sealed_email direct na succesvolle verzending",
                 "validates": {
-                  "type": "contains_text",
-                  "file": "backend/app/routers/waitlist.py",
-                  "text": "purge"
+                  "file": "backend/app/services/launch_send.py",
+                  "type": "file_exists"
+                }
+              },
+              {
+                "description": "Idempotency-marker sent_at aanwezig in launch_send.py \u2014 voorkomt dubbele verzending bij herstart",
+                "id": "D3.11",
+                "validates": {
+                  "file": "backend/app/services/launch_send.py",
+                  "text": "sent_at",
+                  "type": "contains_text"
+                }
+              },
+              {
+                "description": "Purge van sealed_email na succesvolle verzending aantoonbaar in launch_send.py via expliciete null-assignment",
+                "id": "D3.12",
+                "validates": {
+                  "file": "backend/app/services/launch_send.py",
+                  "text": "sealed_email = None",
+                  "type": "contains_text"
                 }
               }
             ],
-            "exit_criteria": "Confirm-flow, token-unsubscribe, resend en launch-send idempotency allemaal afgedekt; purge na launch aantoonbaar in code; alle endpoints geven identieke response ongeacht bekendheid adres"
+            "exit_criteria": "Confirm-flow, token-unsubscribe, resend en launch-send idempotency allemaal afgedekt; dedicated launch_send.py script aanwezig; sent_at idempotency-marker en sealed_email = None purge aantoonbaar in code; alle endpoints geven identieke response ongeacht bekendheid adres"
           },
           {
             "cycle_number": 4,
             "deliverables": [
               {
+                "description": "Umami script-tag aanwezig in index.html met verplicht data-website-id attribuut (self-hosted vereiste)",
                 "id": "D4.1",
-                "description": "Umami script self-hosted ge\u00efntegreerd (geen third-party analytics)",
                 "validates": {
-                  "type": "absent_text",
                   "file": "frontend/index.html",
-                  "text": "google-analytics"
+                  "text": "data-website-id",
+                  "type": "contains_text"
                 }
               },
               {
@@ -261,9 +278,18 @@
                   "file": "frontend/src/pages/TransparencyPage.jsx",
                   "text": "waitlist"
                 }
+              },
+              {
+                "description": "index.html verwijst niet naar umami.is (cloud-hosted Umami verboden \u2014 self-hosted only)",
+                "id": "D4.5",
+                "validates": {
+                  "file": "frontend/index.html",
+                  "text": "umami.is",
+                  "type": "absent_text"
+                }
               }
             ],
-            "exit_criteria": "Umami expliciet benoemd op /transparency incl. self-hosted verklaring; waitlist-disclosure aanwezig; footer href=/transparency aantoonbaar in JSX; geen third-party tracking in index.html"
+            "exit_criteria": "Umami expliciet benoemd op /transparency incl. self-hosted verklaring; waitlist-disclosure aanwezig; footer href=/transparency aantoonbaar in JSX; data-website-id aanwezig in index.html; geen cloud-Umami (umami.is) of Google Analytics"
           }
         ]
       }
