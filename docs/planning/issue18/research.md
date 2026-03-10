@@ -258,12 +258,58 @@ Packages to add:
 
 ---
 
+## Local Development Prerequisites
+
+Required to run the full stack locally. Must be satisfied before the validation phase can execute.
+
+### Layer 1 — Frontend only (pages, no form submission)
+
+| Requirement | Version | Notes |
+|-------------|---------|-------|
+| Node.js | 20 LTS+ | |
+| npm | bundled with Node | |
+
+```bash
+cd frontend && npm install && npm run dev
+```
+
+### Layer 2 — Full stack (including waitlist API)
+
+| Requirement | Version | Install | Purpose |
+|-------------|---------|---------|---------|
+| Node.js | 20 LTS+ | nodejs.org | Vite dev server |
+| Python | 3.12+ | python.org | FastAPI backend |
+| pynacl | latest | `pip install pynacl` | libsodium sealed box encryption |
+| fastapi + uvicorn | latest | `pip install fastapi uvicorn` | API server |
+| SQLite | bundled with Python | — | Waitlist storage; no install needed |
+| Mailpit | latest | mailpit.axllent.org | Local SMTP catcher — captures outgoing mails in web UI at `localhost:8025`; required to test double opt-in and unsubscribe flows |
+
+### Keypair generation (one-time, dev environment)
+
+No extra tooling required — `pynacl` provides everything. A CLI script `scripts/generate_keypair.py` will be provided that generates a dev keypair and writes to `.env.local`. The production keypair is generated offline on the operator's own machine — never on the server.
+
+### Validation gate
+
+The validation phase requires all Layer 2 prerequisites to be present. The following flows must be testable end-to-end before the phase passes:
+
+1. Subscribe → receive confirmation email in Mailpit → click confirm link → status = `confirmed`
+2. Unsubscribe via token link → status = `unsubscribed`
+3. Unsubscribe via "lost my email" form → identical response regardless of whether address exists
+4. Bot submission (honeypot filled) → silently rejected, no mail sent
+5. Duplicate submission → identical response to new submission (no enumeration)
+6. Launch decryption script → all `confirmed` sealed emails decryptable with dev private key
+
+> **Note for environment setup:** A separate agent will prepare the local development environment (Node.js, Python, Mailpit, keypair generation) so this agent's context remains focused on the refactor implementation.
+
+---
+
 ## Out of Scope
 
 - Umami installation on Hetzner (infrastructure, separate issue)
 - nginx + SSL configuration on Hetzner (infrastructure)
 - DNS cutover bhosted → Hetzner (operations)
 - Any page beyond `/` and `/charter`
+- Local environment setup (handled by separate agent before validation phase)
 
 ---
 
@@ -274,3 +320,4 @@ Packages to add:
 | 1.0 | 2026-03-10 | Agent | Initial scaffold |
 | 1.1 | 2026-03-10 | Agent | Full research findings; translated to English |
 | 1.2 | 2026-03-10 | Agent | Waitlist violations identified; cryptographic design; charter compatibility analysis; GitHub transparency link |
+| 1.3 | 2026-03-10 | Agent | Local development prerequisites; validation gate definition; environment setup delegated to separate agent |
