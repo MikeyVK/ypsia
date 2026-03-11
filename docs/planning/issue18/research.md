@@ -34,7 +34,7 @@ PHP is also the wrong stack. The existing `frontend/` scaffold (React 18.3.1 + V
 
 ## Findings
 
-### 1. Scope — Exactly Two Pages
+### 1. Scope — Exactly Three Pages
 
 | Route | Description |
 |-------|-------------|
